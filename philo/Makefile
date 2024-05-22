@@ -1,4 +1,4 @@
-SRC =  args.c init.c philosophers.c utils.c
+SRC =  args.c init.c philosophers.c 
 
 NAME = philo
 OBJ = $(SRC:.c=.o)
