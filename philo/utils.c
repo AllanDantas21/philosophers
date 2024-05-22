@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.c                                     :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/22 18:24:14 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/22 20:34:55 by aldantas         ###   ########.fr       */
+/*   Created: 2024/05/22 20:26:20 by aldantas          #+#    #+#             */
+/*   Updated: 2024/05/22 20:32:42 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "philosophers.c"
 
-static void	philo(int ac, char **av)
+int	ft_atoi(const char *nptr)
 {
-	t_data	data;
+	int	res;
+	int	sign;
 
-	init_data(&data, ac, av);
-}
-
-int	main(int ac, char **av)
-{
-	if(ac == 3 || ac == 4)
+	res = 0;
+	sign = 1;
+	while ((*nptr == 32) || (*nptr >= 9 && *nptr <= 13))
+		nptr++;
+	if (*nptr == '-' || *nptr == '+')
 	{
-		if (check_args(ac, av))
-			return (-1);
-		philo(ac, av);
+		if (*nptr == '-')
+			sign = -1;
+		nptr++;
 	}
-	else
-		printf("incorrect arguments");
-	return(0);
+	while (*nptr >= '0' && *nptr <= '9')
+	{
+		res *= 10;
+		res += *nptr++ - '0';
+	}
+	return ((int)(res * sign));
 }

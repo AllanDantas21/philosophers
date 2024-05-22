@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:02:41 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/22 20:15:43 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/22 20:30:02 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 typedef struct s_fork
 {
-	t_mtx	fork;
 	int	id;
 }	t_fork;
 
@@ -39,5 +38,6 @@ typedef struct s_data
 
 void	init_data(t_data *data, int ac, char **av);
 int	check_args(int ac, char **av);
+int	ft_atoi(const char *nptr);
 
 #endif
