@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.c                                     :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/22 18:24:14 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/23 19:53:30 by aldantas         ###   ########.fr       */
+/*   Created: 2024/05/23 19:55:31 by aldantas          #+#    #+#             */
+/*   Updated: 2024/05/23 20:04:27 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-static void	philo(int ac, char **av)
+void	print_error()
 {
-	t_data	data;
-
-	init_data(&data, ac, av);
-}
-
-int	main(int ac, char **av)
-{
-	if(ac == 5 || ac == 6)
-	{
-		if (check_args(av))
-			return (-1);
-		philo(ac, av);
-	}
-	else
-		printf("incorrect arguments\n");
-	return(0);
+	printf("only digit arguments!\n");
+	exit(-1);
 }

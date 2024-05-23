@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:02:41 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/22 23:20:03 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/23 20:03:11 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <pthread.h>
+# include <stdlib.h>
 
 typedef struct s_fork
 {
@@ -37,7 +38,10 @@ typedef struct s_data
 }	t_data;
 
 void	init_data(t_data *data, int ac, char **av);
-int		check_args(int ac, char **av);
 int		ft_atoi(const char *nptr);
+
+/* parsers */
+int		check_args(char **av);
+void	print_error();
 
 #endif
