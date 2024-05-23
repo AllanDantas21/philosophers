@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:10:18 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/22 20:39:44 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:32:04 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ void	init_data(t_data *data, int ac, char **av)
 	data->time_to_die = ft_atoi(av[2]);
 	data->time_to_eat = ft_atoi(av[3]);
 	data->time_to_sleep = ft_atoi(av[4]);
-	if (ac == 5)
-		data->nbr_philos_eats = ft_atoi(av[5]);
-	else
-		data->nbr_philos_eats = 0;
+	if (ac == 6)
+		printf ("5 parametros!!!");
+	// 	data->nbr_philos_eats = ft_atoi(av[5]);
+	// else
+	// 	data->nbr_philos_eats = 0;
 }

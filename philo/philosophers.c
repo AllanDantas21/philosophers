@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:24:14 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/22 20:41:48 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:32:10 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	philo(int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	if(ac == 3 || ac == 4)
+	if(ac == 5 || ac == 6)
 	{
 		if (check_args(ac, av))
 			return (-1);
