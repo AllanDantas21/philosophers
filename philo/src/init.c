@@ -6,11 +6,11 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:10:18 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/23 19:32:04 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/23 23:21:06 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "../inc/philosophers.h"
 
 int	ft_atoi(const char *nptr)
 {

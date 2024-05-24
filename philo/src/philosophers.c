@@ -1,46 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsers.c                                          :+:      :+:    :+:   */
+/*   philosophers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/22 20:08:36 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/23 22:28:03 by aldantas         ###   ########.fr       */
+/*   Created: 2024/05/22 18:24:14 by aldantas          #+#    #+#             */
+/*   Updated: 2024/05/23 23:21:12 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "../inc/philosophers.h"
 
-static int	ft_isdigit(int digit)
+static void	philo(int ac, char **av)
 {
-	return (digit >= '0' && digit <= '9');
+	t_data	data;
+
+	init_data(&data, ac, av);
 }
 
-int	check_input_digit(char **args)
+int	main(int ac, char **av)
 {
-	int	i;
-	int	k;
-
-	args++;
-	i = 0;
-	while(args[i])
+	if(ac == 5 || ac == 6)
 	{
-		k = 0;
-		while(args[i][k])
-		{
-			if (!ft_isdigit(args[i][k]))
-				return (1);
-			k++;
-		}
-		i++;
+		if (check_args(av))
+			return (-1);
+		philo(ac, av);
 	}
-	return (0);
-}
-
-int	check_args(char **av)
-{
-	if (check_input_digit(av))
-		return(-1);
-	return (0);
+	else
+		print_error(ac);
+	return(0);
 }

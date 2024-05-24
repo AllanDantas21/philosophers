@@ -1,21 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   parsers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 19:55:31 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/23 22:37:17 by aldantas         ###   ########.fr       */
+/*   Created: 2024/05/22 20:08:36 by aldantas          #+#    #+#             */
+/*   Updated: 2024/05/23 23:21:10 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "../inc/philosophers.h"
 
-void	print_error(int ac)
+static int	ft_isdigit(int digit)
 {
-	if (ac < 5)
-		write(2, "too few arguments\n", 18);
-	else if (ac > 6)
-		write(2, "too more arguments\n", 19);
+	return (digit >= '0' && digit <= '9');
+}
+
+int	check_input_digit(char **args)
+{
+	int	i;
+	int	k;
+
+	args++;
+	i = 0;
+	while(args[i])
+	{
+		k = 0;
+		while(args[i][k])
+		{
+			if (!ft_isdigit(args[i][k]))
+				return (1);
+			k++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+int	check_args(char **av)
+{
+	if (check_input_digit(av))
+		return(-1);
+	return (0);
 }
