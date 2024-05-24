@@ -6,14 +6,16 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 19:55:31 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/23 20:04:27 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/23 22:37:17 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	print_error()
+void	print_error(int ac)
 {
-	printf("only digit arguments!\n");
-	exit(-1);
+	if (ac < 5)
+		write(2, "too few arguments\n", 18);
+	else if (ac > 6)
+		write(2, "too more arguments\n", 19);
 }

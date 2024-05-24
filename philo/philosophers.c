@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:24:14 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/23 19:53:30 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/23 22:35:18 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ int	main(int ac, char **av)
 		philo(ac, av);
 	}
 	else
-		printf("incorrect arguments\n");
+		print_error(ac);
 	return(0);
 }
