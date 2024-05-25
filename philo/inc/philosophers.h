@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:02:41 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/25 20:16:03 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/25 20:37:03 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ typedef struct s_data
 	int	eats_total;
 }	t_data;
 
-void		init_data(t_data *data, char **av);
+/* inits */
+void		parse_data(t_data *data, char **av);
+
+/* utils */
 long		ft_atol(const char *nptr);
 
 /* parsers */

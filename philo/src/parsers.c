@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:08:36 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/25 20:12:37 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/25 20:47:49 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,16 @@ int	check_args(char **av)
 		return(-1);
 	}
 	return (0);
+}
+
+void	parse_data(t_data *data, char **av)
+{
+	data->philo_nbr = ft_atol(av[1]);
+	data->time_die = ft_atol(av[2]) * 1000;
+	data->time_eat = ft_atol(av[3]) * 1000;
+	data->time_sleep = ft_atol(av[4]) * 1000;
+	if (av[5])
+		data->eats_total = ft_atol(av[5]);
+	 else
+		data->eats_total = 0;
 }
