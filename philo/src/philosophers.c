@@ -6,26 +6,22 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:24:14 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/23 23:21:12 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/25 19:06:04 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philosophers.h"
 
-static void	philo(int ac, char **av)
-{
-	t_data	data;
-
-	init_data(&data, ac, av);
-}
 
 int	main(int ac, char **av)
 {
+	t_data data;
+
 	if(ac == 5 || ac == 6)
 	{
 		if (check_args(av))
 			return (-1);
-		philo(ac, av);
+		init_data(&data, ac, av);
 	}
 	else
 		print_error(ac);

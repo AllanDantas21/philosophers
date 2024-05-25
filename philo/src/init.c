@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:10:18 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/23 23:21:06 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/25 18:51:38 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int	ft_atoi(const char *nptr)
 
 void	init_data(t_data *data, int ac, char **av)
 {
-	data->nbr_of_philosophers = ft_atoi(av[1]);
-	data->time_to_die = ft_atoi(av[2]);
-	data->time_to_eat = ft_atoi(av[3]);
-	data->time_to_sleep = ft_atoi(av[4]);
+	data->philo_nbr = ft_atoi(av[1]);
+	data->time_die = ft_atoi(av[2]);
+	data->time_eat = ft_atoi(av[3]);
+	data->time_sleep = ft_atoi(av[4]);
 	if (ac == 6)
 		printf ("5 parametros!!!");
 	// 	data->nbr_philos_eats = ft_atoi(av[5]);
