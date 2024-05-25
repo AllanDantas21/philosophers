@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:02:41 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/25 19:40:45 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/25 19:53:16 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_data
 }	t_data;
 
 void		init_data(t_data *data, int ac, char **av);
-int		ft_atoi(const char *nptr);
+long		ft_atol(const char *nptr);
 
 /* parsers */
 int		check_args(char **av);
