@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:10:18 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/25 19:52:43 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/25 20:16:13 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,14 @@ long	ft_atol(const char *nptr)
 	return ((long)(res * sign));
 }
 
-void	init_data(t_data *data, int ac, char **av)
+void	init_data(t_data *data, char **av)
 {
 	data->philo_nbr = ft_atol(av[1]);
-	data->time_die = ft_atol(av[2]);
-	data->time_eat = ft_atol(av[3]);
-	data->time_sleep = ft_atol(av[4]);
-	if (ac == 6)
-		printf ("5 parametros!!!");
-	// 	data->nbr_philos_eats = ft_atoi(av[5]);
-	// else
-	// 	data->nbr_philos_eats = 0;
+	data->time_die = ft_atol(av[2]) * 1000;
+	data->time_eat = ft_atol(av[3]) * 1000;
+	data->time_sleep = ft_atol(av[4]) * 1000;
+	if (av[5])
+		data->eats_total = ft_atol(av[5]);
+	 else
+		data->eats_total = 0;
 }

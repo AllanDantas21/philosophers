@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:24:14 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/25 19:40:53 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/25 20:14:35 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 	{
 		if (check_args(av))
 			return (-1);
-		init_data(&data, ac, av);
+		init_data(&data, av);
 	}
 	else
 		print_error(ac);
