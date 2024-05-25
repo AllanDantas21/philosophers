@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:08:36 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/25 18:52:06 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/25 19:33:34 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_input_digit(char **args)
 		k = 0;
 		while(args[i][k])
 		{
-			if (!ft_isdigit(args[i][k]))
+			if (!ft_isdigit(args[i][k]) && args[i][k] != '+')
 				return (1);
 			k++;
 		}
@@ -41,6 +41,9 @@ int	check_input_digit(char **args)
 int	check_args(char **av)
 {
 	if (check_input_digit(av))
+	{
+		write(2, RED"parse error: incorrect input\n"RESET, 36);
 		return(-1);
+	}
 	return (0);
 }
