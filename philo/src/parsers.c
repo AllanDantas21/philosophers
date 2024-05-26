@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:08:36 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/25 20:47:49 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/26 00:44:53 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,5 @@ void	parse_data(t_data *data, char **av)
 		data->eats_total = ft_atol(av[5]);
 	 else
 		data->eats_total = 0;
+	data->is_all_alive = 1;
 }

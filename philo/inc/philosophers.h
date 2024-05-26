@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:02:41 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/25 20:37:03 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/26 01:12:01 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <stdlib.h>
+# include <stdbool.h>
 
 typedef pthread_mutex_t	t_mtx;
 typedef pthread_t	t_thread;
@@ -43,17 +44,21 @@ typedef struct s_philo
 {
 	t_thread	thread;
 	t_fork		*left_fork;
-	t_fork		*rigth_fork;
+	t_fork		*right_fork;
 	int		id;
 }	t_philo;
 
 typedef struct s_data
 {
+
 	int	philo_nbr;
 	int	time_die;
 	int	time_eat;
 	int	time_sleep;
 	int	eats_total;
+	long	init_simulation;
+	bool	is_all_alive;
+	t_philo	**philo;
 }	t_data;
 
 /* inits */
