@@ -22,6 +22,7 @@ int	main(int ac, char **av)
 		if (check_args(av))
 			return (-1);
 		parse_data(&data, av);
+		init_data(&data);
 	}
 	else
 		print_error(ac);

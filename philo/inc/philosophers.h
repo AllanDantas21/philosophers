@@ -20,7 +20,7 @@
 # include <stdbool.h>
 
 typedef pthread_mutex_t	t_mtx;
-typedef pthread_t	t_thread;
+typedef pthread_t		t_thread;
 
 /* colors */
 # define RESET  "\033[0m"      
@@ -35,30 +35,32 @@ typedef pthread_t	t_thread;
 /* each fork */
 typedef struct s_fork
 {
-	t_mtx	fork_mtx;
-	int	id_mtx;
+	t_mtx	fork_mtx;	// cada garfo vai ser um mutex
+	int	id_mtx;			// id de cada garfo
 }	t_fork;
 
 /* each philosopher */
 typedef struct s_philo
 {
-	t_thread	thread;
-	t_fork		*left_fork;
-	t_fork		*right_fork;
-	int		id;
+	t_thread	thread;		// cada filosofo vai ser uma thread
+	t_fork		*left_fork;	// garfo esquerdo
+	t_fork		*right_fork;// garfo direito
+	int			id;			// id do filosofo
+	t_data		data;
 }	t_philo;
 
+/* datas */
 typedef struct s_data
 {
-
-	int	philo_nbr;
-	int	time_die;
-	int	time_eat;
-	int	time_sleep;
-	int	eats_total;
-	long	init_simulation;
-	bool	is_all_alive;
-	t_philo	**philo;
+	int		philo_nbr;		// numero de filosofos
+	int		time_die;		// tempo para morrer
+	int		time_eat;		// tempo parar comer 
+	int		time_sleep;		// tempo para dormir
+	int		eats_total;		// variavel opcional para o quinto paramentro
+	long	time_simulation; // vai contar o tempo da simulação
+	bool	is_all_alive;	 // flag para saber se todos estão vivos -> se um morrer para o programa
+	t_fork	*array_forks;	// array de forks -> um para cada filosofo 
+	t_philo	*array_philos;	// array dos filosofos
 }	t_data;
 
 /* inits */
@@ -68,7 +70,7 @@ void		parse_data(t_data *data, char **av);
 long		ft_atol(const char *nptr);
 
 /* parsers */
-int		check_args(char **av);
+int			check_args(char **av);
 void		print_error();
 
 #endif
