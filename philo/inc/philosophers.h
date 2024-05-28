@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:02:41 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/26 01:12:01 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/28 01:33:32 by aldantas         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
@@ -21,6 +21,7 @@
 
 typedef pthread_mutex_t	t_mtx;
 typedef pthread_t		t_thread;
+typedef struct s_data	t_data;
 
 /* colors */
 # define RESET  "\033[0m"      
@@ -32,21 +33,14 @@ typedef pthread_t		t_thread;
 # define C      "\033[1;36m"
 # define W      "\033[1;37m"
 
-/* each fork */
-typedef struct s_fork
-{
-	t_mtx	fork_mtx;	// cada garfo vai ser um mutex
-	int	id_mtx;			// id de cada garfo
-}	t_fork;
-
 /* each philosopher */
 typedef struct s_philo
 {
-	t_thread	thread;		// cada filosofo vai ser uma thread
-	t_fork		*left_fork;	// garfo esquerdo
-	t_fork		*right_fork;// garfo direito
 	int			id;			// id do filosofo
-	t_data		data;
+	t_thread	thread;		// cada filosofo vai ser uma thread
+	t_mtx		*left_fork;	// garfo esquerdo
+	t_mtx		*right_fork;// garfo direito
+	t_data		*table;
 }	t_philo;
 
 /* datas */
@@ -59,12 +53,13 @@ typedef struct s_data
 	int		eats_total;		// variavel opcional para o quinto paramentro
 	long	time_simulation; // vai contar o tempo da simulação
 	bool	is_all_alive;	 // flag para saber se todos estão vivos -> se um morrer para o programa
-	t_fork	*array_forks;	// array de forks -> um para cada filosofo 
-	t_philo	*array_philos;	// array dos filosofos
+	t_mtx	*array_forks;	// array de forks -> um para cada filosofo 
+	t_philo	**array_philos;	// array dos filosofos
 }	t_data;
 
 /* inits */
 void		parse_data(t_data *data, char **av);
+int			init_data(t_data *data);
 
 /* utils */
 long		ft_atol(const char *nptr);
