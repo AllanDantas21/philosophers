@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:02:41 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/29 02:31:57 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/29 02:58:11 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -59,16 +59,16 @@ typedef struct s_data
 }	t_data;
 
 /* inits */
-void		parse_data(t_data *data, char **av);
-int			init_data(t_data *data);
+void		parse_data(t_data *data, char **av); // fazer o parsing das informações
+int			init_data(t_data *data);			// iniciar as threads e mutexes
 
 /* routine */
-int		run_threads(t_data *data);
-void	*routine(void *arg);
+int		run_threads(t_data *data);	// dar join nos threads
+void	*routine(void *arg);		// função de rotina dos threads
 
 /* utils */
 long		ft_atol(const char *nptr);
-long long	get_time(void);
+long long	get_time(void);			// função de tempo -> tem que testar ainda
 
 /* parsers */
 int			check_args(char **av);
