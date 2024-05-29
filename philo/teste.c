@@ -6,38 +6,62 @@
 /*   By: kneves <kneves@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 14:35:23 by kneves            #+#    #+#             */
-/*   Updated: 2024/05/24 20:11:32 by kneves           ###   ########.fr       */
+/*   Updated: 2024/05/29 13:29:38 by kneves           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include <stdio.h>
+#include <sys/time.h>  // This includes the declaration for gettimeofday
+#include <time.h>
+#include <unistd.h>
 
-int	mails = 0;
-pthread_mutex_t	mutex;
+#define NUM_CALLS 100
+#define BOLD "\033[1m"
+#define GOLD "\033[0;33m"
+#define RESET "\033[0m"
 
-void*	routine()
-{
-	for (int x = 0; x < 1000000; x++)
-	{
-		pthread_mutex_lock(&mutex);
-		mails++;
-		pthread_mutex_unlock(&mutex);
-	}
+void foo(void) {
+    // Empty function
 }
 
-int	main()
+int main(void)
 {
-	pthread_t t1, t2;
-	
-	pthread_mutex_init(&mutex, NULL);
-	if (pthread_create(&t1, NULL, &routine, NULL) != 0)
-		return 1;
-	if (pthread_create(&t2, NULL, &routine, NULL) != 0)
-		return 2;
-	if (pthread_join(t1, NULL) != 0)
-		return 3;
-	if (pthread_join(t2, NULL) != 0)
-		return 4;
-	pthread_mutex_destroy(&mutex);
-	printf("mails = %d\n", mails);
+    struct timespec start_ts, end_ts;
+    double elapsed_usleep_us, elapsed_usleep_ns;
+    double elapsed_gettimeofday_us, elapsed_gettimeofday_ns;
+    double elapsed_foo_us, elapsed_foo_ns;
+
+    // Measure usleep
+    clock_gettime(CLOCK_MONOTONIC, &start_ts);
+    for (int i = 0; i < NUM_CALLS; i++)
+        usleep(0);
+    clock_gettime(CLOCK_MONOTONIC, &end_ts);
+    elapsed_usleep_ns = (end_ts.tv_sec - start_ts.tv_sec) * 1e9 + (end_ts.tv_nsec - start_ts.tv_nsec);
+    elapsed_usleep_us = elapsed_usleep_ns / 1e3;
+
+    // Measure gettimeofday
+    clock_gettime(CLOCK_MONOTONIC, &start_ts);
+    struct timeval tmp;
+    for (int i = 0; i < NUM_CALLS; i++)
+        gettimeofday(&tmp, NULL);
+    clock_gettime(CLOCK_MONOTONIC, &end_ts);
+    elapsed_gettimeofday_ns = (end_ts.tv_sec - start_ts.tv_sec) * 1e9 + (end_ts.tv_nsec - start_ts.tv_nsec);
+    elapsed_gettimeofday_us = elapsed_gettimeofday_ns / 1e3;
+
+    // Measure foo
+    clock_gettime(CLOCK_MONOTONIC, &start_ts);
+    for (int i = 0; i < NUM_CALLS; i++)
+        foo();
+    clock_gettime(CLOCK_MONOTONIC, &end_ts);
+    elapsed_foo_ns = (end_ts.tv_sec - start_ts.tv_sec) * 1e9 + (end_ts.tv_nsec - start_ts.tv_nsec);
+    elapsed_foo_us = elapsed_foo_ns / 1e3;
+
+    printf("Time for %d calls to usleep(0):\t\t" BOLD "%.0f microseconds %.0f ns\n" RESET,
+           NUM_CALLS, elapsed_usleep_us, elapsed_usleep_ns);
+    printf("Time for %d calls to gettimeofday():\t\t" BOLD "%.0f microseconds\t %.0fns\n" RESET,
+           NUM_CALLS, elapsed_gettimeofday_us, elapsed_gettimeofday_ns);
+    printf("Time for %d calls to foo():\t\t\t" BOLD "%.0f microseconds\t%.0f ns\n\n" RESET,
+           NUM_CALLS, elapsed_foo_us, elapsed_foo_ns);
+
+    return 0;
 }
