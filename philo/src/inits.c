@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 19:00:52 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/29 02:31:45 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/29 02:34:49 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -49,13 +49,6 @@ static int	init_mutex(t_data *data)
 			return (-1);
 	}
 	return (0);
-}
-
-void *routine(void *arg)
-{
-	(void)arg;
-	printf("estou funcionando!");
-	return (NULL);
 }
 
 static int	init_threads(t_data *data)

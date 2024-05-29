@@ -6,11 +6,19 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 02:20:52 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/29 02:25:08 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/29 02:35:42 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "../inc/philosophers.h"
+
+
+void *routine(void *arg)
+{
+	(void)arg;
+	printf(G"estou funcionando!\n"RESET);
+	return (NULL);
+}
 
 int  run_threads(t_data *data)
 {
