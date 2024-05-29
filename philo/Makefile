@@ -1,4 +1,4 @@
-SRC = src/parsers.c src/utils.c src/philosophers.c src/errors.c src/inits.c
+SRC = src/parsers.c src/utils.c src/philosophers.c src/errors.c src/inits.c src/routine.c
 
 NAME = philo
 OBJ = $(SRC:.c=.o)

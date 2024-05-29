@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 19:00:52 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/28 01:34:27 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/29 02:31:45 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -51,11 +51,34 @@ static int	init_mutex(t_data *data)
 	return (0);
 }
 
+void *routine(void *arg)
+{
+	(void)arg;
+	printf("estou funcionando!");
+	return (NULL);
+}
+
+static int	init_threads(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	data->time_simulation = get_time();
+	while (++i < data->philo_nbr)
+	{
+		if (pthread_create(&data->array_philos[i]->thread, NULL, routine, NULL))
+			return (1);
+	}
+	return (0);
+}
+
 int	init_data(t_data *data)
 {
 	if (philos_inits(data))
 		return (-1);
 	if (init_mutex(data))
+		return (-1);
+	if (init_threads(data))
 		return (-1);
 	return (0);
 }

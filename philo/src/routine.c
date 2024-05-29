@@ -1,31 +1,28 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.c                                     :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/22 18:24:14 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/29 02:26:03 by aldantas         ###   ########.fr       */
+/*   Created: 2024/05/29 02:20:52 by aldantas          #+#    #+#             */
+/*   Updated: 2024/05/29 02:25:08 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "../inc/philosophers.h"
 
-
-int	main(int ac, char **av)
+int  run_threads(t_data *data)
 {
-	t_data data;
+	int	i;
+	int	ret;
 
-	if(ac == 5 || ac == 6)
+	i = -1;
+	while (++i < data->philo_nbr)
 	{
-		if (check_args(av))
-			return (-1);
-		parse_data(&data, av);
-		init_data(&data);
-		run_threads(&data);
+		ret = pthread_join(data->array_philos[i]->thread, NULL);
+		if (ret)
+			return (ret);
 	}
-	else
-		print_error(ac);
-	return(0);
+    return (ret);
 }

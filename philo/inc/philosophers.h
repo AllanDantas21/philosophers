@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:02:41 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/28 01:33:32 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/29 02:31:57 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -18,6 +18,7 @@
 # include <pthread.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <sys/time.h>
 
 typedef pthread_mutex_t	t_mtx;
 typedef pthread_t		t_thread;
@@ -61,8 +62,13 @@ typedef struct s_data
 void		parse_data(t_data *data, char **av);
 int			init_data(t_data *data);
 
+/* routine */
+int		run_threads(t_data *data);
+void	*routine(void *arg);
+
 /* utils */
 long		ft_atol(const char *nptr);
+long long	get_time(void);
 
 /* parsers */
 int			check_args(char **av);
