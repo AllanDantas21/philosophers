@@ -15,8 +15,11 @@
 
 void *routine(void *arg)
 {
-	(void)arg;
-	print_status(arg, EAT);
+	t_philo	*p;
+
+	p = (t_philo *)arg;
+	print_status(p, EAT);
+	print_status(p, EAT);
 	return (NULL);
 }
 

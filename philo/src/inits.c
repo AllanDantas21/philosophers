@@ -59,7 +59,7 @@ static int	init_threads(t_data *data)
 	data->time_simulation = get_time();
 	while (++i < data->philo_nbr)
 	{
-		if (pthread_create(&data->array_philos[i]->thread, NULL, routine, &data->array_philos[i]))
+		if (pthread_create(&data->array_philos[i]->thread, NULL, routine, data->array_philos[i]))
 			return (1);
 	}
 	return (0);

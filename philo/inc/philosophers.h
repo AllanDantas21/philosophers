@@ -46,7 +46,7 @@ typedef enum	e_status
 /* each philosopher */
 typedef struct s_philo
 {
-	int			id;			// id do filosofo
+	int		id;			// id do filosofo
 	t_thread	thread;		// cada filosofo vai ser uma thread
 	t_mtx		*left_fork;	// garfo esquerdo
 	t_mtx		*right_fork;// garfo direito
