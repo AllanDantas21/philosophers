@@ -18,6 +18,7 @@ static int  philos_inits(t_data *data)
 	t_philo	*philo;
 
 	i = data->philo_nbr;
+	data->time_simulation = get_time();
 	data->array_forks = malloc(sizeof(pthread_mutex_t)
 			* data->philo_nbr);
 	data->array_philos = malloc(sizeof(t_philo *) * data->philo_nbr);

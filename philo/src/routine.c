@@ -16,13 +16,16 @@
 void *routine(void *arg)
 {
 	t_philo	*p;
+	t_data	*table;
 
 	p = (t_philo *)arg;
-	print_status(p, EAT);
-	print_status(p, SLEEP);
-	print_status(p, DEAD);
-	print_status(p, THINK);
-	print_status(p, FORK);
+	table = p->table;
+	while(table->is_all_alive)
+	{
+		// comer();
+		// dormir();
+		// pensar();
+	}
 	return (NULL);
 }
 
