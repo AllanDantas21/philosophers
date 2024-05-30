@@ -20,6 +20,19 @@ long long	get_time(void)
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
+void	print_status(t_philo *p, t_status flag)
+{
+	if (flag == SLEEP)
+		printf ("id: %d is sleeping\n", p->id);
+	if (flag == THINK)
+		printf ("id: %d is thinking\n", p->id);
+	if (flag == EAT)
+		printf ("id: %d is eating\n", p->id);
+	if (flag == FORK)
+		printf ("id: %d takes a fork\n", p->id);
+	if (flag == DEAD)
+		printf ("id: %d is dead\n", p->id);
+}
 void	free_all(t_data *data)
 {
 	int	i;

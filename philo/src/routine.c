@@ -16,7 +16,7 @@
 void *routine(void *arg)
 {
 	(void)arg;
-	
+	print_status(arg, EAT);
 	return (NULL);
 }
 

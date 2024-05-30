@@ -34,6 +34,15 @@ typedef struct s_data	t_data;
 # define C      "\033[1;36m"
 # define W      "\033[1;37m"
 
+typedef enum	e_status
+{
+	SLEEP,
+	EAT,
+	FORK,
+	THINK,
+	DEAD
+}	t_status;
+
 /* each philosopher */
 typedef struct s_philo
 {
@@ -70,6 +79,7 @@ void	*routine(void *arg);		// função de rotina dos threads
 long		ft_atol(const char *nptr);
 void		free_all(t_data *data);		// free em tudo
 long long	get_time(void);			// função de tempo -> tem que testar ainda
+void		print_status(t_philo *p, t_status flag);
 
 /* parsers */
 int			check_args(char **av);
