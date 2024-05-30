@@ -19,7 +19,10 @@ void *routine(void *arg)
 
 	p = (t_philo *)arg;
 	print_status(p, EAT);
-	print_status(p, EAT);
+	print_status(p, SLEEP);
+	print_status(p, DEAD);
+	print_status(p, THINK);
+	print_status(p, FORK);
 	return (NULL);
 }
 

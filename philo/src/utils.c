@@ -23,15 +23,15 @@ long long	get_time(void)
 void	print_status(t_philo *p, t_status flag)
 {
 	if (flag == SLEEP)
-		printf ("id: %d is sleeping\n", p->id);
+		printf (Y"id: %d is sleeping\n"RESET, p->id);
 	if (flag == THINK)
-		printf ("id: %d is thinking\n", p->id);
+		printf (C"id: %d is thinking\n"RESET, p->id);
 	if (flag == EAT)
-		printf ("id: %d is eating\n", p->id);
+		printf (G"id: %d is eating\n"RESET, p->id);
 	if (flag == FORK)
-		printf ("id: %d takes a fork\n", p->id);
+		printf (B"id: %d takes a fork\n"RESET, p->id);
 	if (flag == DEAD)
-		printf ("id: %d is dead\n", p->id);
+		printf (RED"id: %d is dead\n"RESET, p->id);
 }
 void	free_all(t_data *data)
 {
