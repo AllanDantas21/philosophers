@@ -28,7 +28,7 @@ static int  philos_inits(t_data *data)
 		philo = malloc(sizeof(t_philo));
 		if (!philo)
 			return (-1);
-		philo->id = i;
+		philo->id = i + 1;
 		philo->thread = 0 ;
 		philo->left_fork = data->array_forks + i;
 		philo->right_fork = data->array_forks + ((i + 1) % data->philo_nbr);
