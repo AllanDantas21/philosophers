@@ -16,7 +16,7 @@
 void *routine(void *arg)
 {
 	(void)arg;
-	printf(G"estou funcionando!\n"RESET);
+	
 	return (NULL);
 }
 

@@ -4,7 +4,7 @@ NAME = philo
 OBJ = $(SRC:.c=.o)
 CC = cc
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror -pthreads
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 

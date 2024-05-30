@@ -68,6 +68,7 @@ void	*routine(void *arg);		// função de rotina dos threads
 
 /* utils */
 long		ft_atol(const char *nptr);
+void		free_all(t_data *data);		// free em tudo
 long long	get_time(void);			// função de tempo -> tem que testar ainda
 
 /* parsers */

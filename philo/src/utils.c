@@ -20,6 +20,20 @@ long long	get_time(void)
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
+void	free_all(t_data *data)
+{
+	int	i;
+
+	i = data->philo_nbr;
+	while (--i >= 0)
+	{
+		pthread_mutex_destroy(&data->array_forks[i]);
+		free(data->array_philos[i]);
+	}
+	free(data->array_forks);
+	free(data->array_philos);
+}
+
 long	ft_atol(const char *nptr)
 {
 	long	res;
