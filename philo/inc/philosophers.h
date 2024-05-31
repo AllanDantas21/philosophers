@@ -25,7 +25,7 @@ typedef pthread_t		t_thread;
 typedef struct s_data	t_data;
 
 /* colors */
-# define RESET  "\033[0m"      
+# define RESET  "\033[0m"
 # define RED	"\033[1;31m"   
 # define G      "\033[1;32m"   
 # define Y      "\033[1;33m"
@@ -47,6 +47,7 @@ typedef enum	e_status
 typedef struct s_philo
 {
 	int		id;			// id do filosofo
+	int		nbr_eats;		// quantas vezes ele comeu
 	t_thread	thread;		// cada filosofo vai ser uma thread
 	t_mtx		*left_fork;	// garfo esquerdo
 	t_mtx		*right_fork;// garfo direito
@@ -60,7 +61,7 @@ typedef struct s_data
 	int		time_die;		// tempo para morrer
 	int		time_eat;		// tempo parar comer 
 	int		time_sleep;		// tempo para dormir
-	int		eats_total;		// variavel opcional para o quinto paramentro
+	int		eats_total;		// variavel opcional para o quinto paramentro;
 	long	time_simulation; // vai contar o tempo da simulação
 	bool	is_all_alive;	 // flag para saber se todos estão vivos -> se um morrer para o programa
 	t_mtx	*array_forks;	// array de forks -> um para cada filosofo 

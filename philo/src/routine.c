@@ -19,6 +19,7 @@ static void	eat(t_philo *philo, t_data *data)
 	pthread_mutex_lock(philo->right_fork);
 	print_status(philo, FORK);
 	print_status(philo, EAT);
+	philo->nbr_eats++;
 	usleep(data->time_eat);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
@@ -43,8 +44,8 @@ void *routine(void *arg)
 	p = (t_philo *)arg;
 	data = p->table;
 	if (p->id % 2 == 0)
-		usleep(10);
-	while(data->is_all_alive)
+		usleep(100);
+	while(data->is_all_alive && p->nbr_eats != data->eats_total)
 	{
 		eat(p, data);
 		nap(p, data);
