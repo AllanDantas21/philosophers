@@ -12,19 +12,43 @@
 
 #include "../inc/philosophers.h"
 
+static void	eat(t_philo *philo, t_data *data)
+{
+	pthread_mutex_lock(philo->left_fork);
+	print_status(philo, FORK);
+	pthread_mutex_lock(philo->right_fork);
+	print_status(philo, FORK);
+	print_status(philo, EAT);
+	usleep(data->time_eat);
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
+}
+
+static void	nap(t_philo *philo, t_data *data)
+{
+	print_status(philo, SLEEP);
+	usleep(data->time_sleep);
+}
+
+static void	think(t_philo *philo)
+{
+	print_status(philo, THINK);
+}
 
 void *routine(void *arg)
 {
 	t_philo	*p;
-	t_data	*table;
+	t_data	*data;
 
 	p = (t_philo *)arg;
-	table = p->table;
-	while(table->is_all_alive)
+	data = p->table;
+	if (p->id % 2 == 0)
+		usleep(10);
+	while(data->is_all_alive)
 	{
-		// comer();
-		// dormir();
-		// pensar();
+		eat(p, data);
+		nap(p, data);
+		think(p);
 	}
 	return (NULL);
 }
