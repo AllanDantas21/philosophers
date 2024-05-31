@@ -44,7 +44,7 @@ void *routine(void *arg)
 	p = (t_philo *)arg;
 	data = p->table;
 	if (p->id % 2 == 0)
-		usleep(100);
+		usleep(1500);
 	while(data->is_all_alive && p->nbr_eats != data->eats_total)
 	{
 		eat(p, data);
