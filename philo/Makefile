@@ -1,4 +1,4 @@
-SRC = src/parsers.c src/utils.c src/philosophers.c src/errors.c src/inits.c src/routine.c
+SRC = src/parsers.c src/utils.c src/philosophers.c src/errors.c src/inits.c src/routine.c src/monitor.c
 
 NAME = philo
 OBJ = $(SRC:.c=.o)
@@ -20,8 +20,6 @@ $(NAME): $(OBJ)
 
 hell:
 	valgrind --tool=helgrind ./philo 3 300 100 100 3
-val:
-	valgrind --leak-check=full ./philo 3 300 100 100 3
 clean:
 	$(RM) $(OBJ)
 	@echo "$(Y) 😉 Objects from the $(NAME) project have been removed $(Reset)"

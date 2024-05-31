@@ -12,7 +12,7 @@
 
 #include "../inc/philosophers.h"
 
-static void	eat(t_philo *philo, t_data *data)
+static void	eat(t_philo *philo)
 {
 	pthread_mutex_lock(philo->left_fork);
 	print_status(philo, FORK);
@@ -20,15 +20,15 @@ static void	eat(t_philo *philo, t_data *data)
 	print_status(philo, FORK);
 	print_status(philo, EAT);
 	philo->nbr_eats++;
-	usleep(data->time_eat);
+	usleep(philo->time_eat);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 }
 
-static void	nap(t_philo *philo, t_data *data)
+static void	nap(t_philo *philo)
 {
 	print_status(philo, SLEEP);
-	usleep(data->time_sleep);
+	usleep(philo->time_sleep);
 }
 
 static void	think(t_philo *philo)
@@ -59,8 +59,8 @@ void *routine(void *arg)
 		usleep(1500);
 	while (check_all_alive(data) && p->nbr_eats != p->eats_total)
 	{
-		eat(p, data);
-		nap(p, data);
+		eat(p);
+		nap(p);
 		think(p);
 	}
 	return (NULL);

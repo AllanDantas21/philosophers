@@ -20,7 +20,8 @@ int	main(int ac, char **av)
 	{
 		if (check_args(av))
 			return (-1);
-		parse_data(&data, av);
+		if (parse_data(&data, av))
+			return (-1);
 		init_data(&data);
 		run_threads(&data);
 		free_all(&data);

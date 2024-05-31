@@ -48,7 +48,9 @@ typedef struct s_philo
 {
 	int		id;			// id do filosofo
 	int		nbr_eats;		// quantas vezes ele comeu
-	int		eats_total;
+	int		eats_total;	// copia do eats_total do data;
+	int		time_eat;	// copia do time_eat do data;
+	int		time_sleep;	// copia do time_sleep do data;
 	t_thread	thread;		// cada filosofo vai ser uma thread
 	t_mtx		*left_fork;	// garfo esquerdo
 	t_mtx		*right_fork;// garfo direito

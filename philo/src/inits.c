@@ -34,6 +34,8 @@ static int  philos_inits(t_data *data)
 		philo->id = i + 1;
 		philo->nbr_eats = 0;
 		philo->eats_total = data->eats_total;
+		philo->time_sleep = data->time_sleep;
+		philo->time_eat = data->time_eat;
 		philo->thread = 0;
 		philo->left_fork = data->array_forks + i;
 		philo->right_fork = data->array_forks + ((i + 1) % data->philo_nbr);
