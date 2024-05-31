@@ -38,6 +38,7 @@ void	free_all(t_data *data)
 	int	i;
 
 	i = data->philo_nbr;
+	pthread_mutex_destroy(&data->mutex);
 	while (--i >= 0)
 	{
 		pthread_mutex_destroy(&data->array_forks[i]);
