@@ -4,7 +4,7 @@ NAME = philo
 OBJ = $(SRC:.c=.o)
 CC = cc
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror -pthread
+CFLAGS = -Wall -Wextra -Werror -lpthread
 
 Reset = \033[0m
 G = \033[32m
@@ -18,6 +18,10 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(blink) $(G) ✅ $(NAME) successfully compiled $(Reset)"
 
+hell:
+	valgrind --tool=helgrind ./philo 3 300 100 100 3
+val:
+	valgrind --leak-check=full ./philo 3 300 100 100 3
 clean:
 	$(RM) $(OBJ)
 	@echo "$(Y) 😉 Objects from the $(NAME) project have been removed $(Reset)"

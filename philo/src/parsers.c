@@ -72,4 +72,5 @@ void	parse_data(t_data *data, char **av)
 	 else
 		data->eats_total = -1;
 	data->is_all_alive = 1;
+
 }

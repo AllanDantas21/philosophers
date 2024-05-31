@@ -48,6 +48,7 @@ typedef struct s_philo
 {
 	int		id;			// id do filosofo
 	int		nbr_eats;		// quantas vezes ele comeu
+	int		eats_total;
 	t_thread	thread;		// cada filosofo vai ser uma thread
 	t_mtx		*left_fork;	// garfo esquerdo
 	t_mtx		*right_fork;// garfo direito
@@ -64,6 +65,7 @@ typedef struct s_data
 	int		eats_total;		// variavel opcional para o quinto paramentro;
 	long	time_simulation; // vai contar o tempo da simulação
 	bool	is_all_alive;	 // flag para saber se todos estão vivos -> se um morrer para o programa
+	t_mtx	mutex;		// 
 	t_mtx	*array_forks;	// array de forks -> um para cada filosofo 
 	t_philo	**array_philos;	// array dos filosofos
 }	t_data;

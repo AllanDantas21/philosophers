@@ -12,7 +12,6 @@
 
 #include "../inc/philosophers.h"
 
-
 int	main(int ac, char **av)
 {
 	t_data data;
@@ -24,7 +23,7 @@ int	main(int ac, char **av)
 		parse_data(&data, av);
 		init_data(&data);
 		run_threads(&data);
-//		free_all(&data);
+		free_all(&data);
 	}
 	else
 		print_error(ac);

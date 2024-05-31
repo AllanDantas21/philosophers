@@ -19,6 +19,8 @@ static int  philos_inits(t_data *data)
 
 	i = data->philo_nbr;
 	data->time_simulation = get_time();
+	if (pthread_mutex_init(&data->mutex, NULL))
+		return (-1);
 	data->array_forks = malloc(sizeof(pthread_mutex_t)
 			* data->philo_nbr);
 	data->array_philos = malloc(sizeof(t_philo *) * data->philo_nbr);
@@ -31,7 +33,8 @@ static int  philos_inits(t_data *data)
 			return (-1);
 		philo->id = i + 1;
 		philo->nbr_eats = 0;
-		philo->thread = 0 ;
+		philo->eats_total = data->eats_total;
+		philo->thread = 0;
 		philo->left_fork = data->array_forks + i;
 		philo->right_fork = data->array_forks + ((i + 1) % data->philo_nbr);
 		philo->table = data;
