@@ -17,21 +17,21 @@ long long	get_time(void)
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
 void	print_status(t_philo *p, t_status flag)
 {
 	if (flag == SLEEP)
-		printf (Y"id: %d is sleeping\n"RESET, p->id);
+		printf (Y"time: %d, id: %d is sleeping\n"RESET, p->last_eat, p->id);
 	if (flag == THINK)
-		printf (C"id: %d is thinking\n"RESET, p->id);
+		printf (C"time: %d, id: %d is thinking\n"RESET, p->last_eat, p->id);
 	if (flag == EAT)
-		printf (G"id: %d is eating\n"RESET, p->id);
+		printf (G"time: %d, id: %d is eating\n"RESET, p->last_eat, p->id);
 	if (flag == FORK)
-		printf (B"id: %d takes a fork\n"RESET, p->id);
+		printf (B"time: %d, id: %d takes a fork\n"RESET, p->last_eat, p->id);
 	if (flag == DEAD)
-		printf (RED"id: %d is dead\n"RESET, p->id);
+		printf (RED"time: %d, id: %d is dead\n"RESET, p->last_eat, p->id);
 }
 void	free_all(t_data *data)
 {

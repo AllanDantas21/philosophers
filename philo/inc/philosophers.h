@@ -49,6 +49,7 @@ typedef struct s_philo
 	int		id;			// id do filosofo
 	int		nbr_eats;		// quantas vezes ele comeu
 	int		eats_total;	// copia do eats_total do data;
+	int		last_eat;
 	int		time_eat;	// copia do time_eat do data;
 	int		time_sleep;	// copia do time_sleep do data;
 	t_thread	thread;		// cada filosofo vai ser uma thread
@@ -79,6 +80,7 @@ int			init_data(t_data *data);			// iniciar as threads e mutexes
 /* routine */
 int		run_threads(t_data *data);	// dar join nos threads
 void	*routine(void *arg);		// função de rotina dos threads
+void	monitor_routine(void *arg);
 
 /* utils */
 long		ft_atol(const char *nptr);

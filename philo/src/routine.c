@@ -20,7 +20,8 @@ static void	eat(t_philo *philo)
 	print_status(philo, FORK);
 	print_status(philo, EAT);
 	philo->nbr_eats++;
-	usleep(philo->time_eat);
+	philo->last_eat = get_time();
+	usleep(philo->time_eat * 1000);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 }
@@ -28,7 +29,7 @@ static void	eat(t_philo *philo)
 static void	nap(t_philo *philo)
 {
 	print_status(philo, SLEEP);
-	usleep(philo->time_sleep);
+	usleep(philo->time_sleep * 1000);
 }
 
 static void	think(t_philo *philo)
@@ -36,19 +37,19 @@ static void	think(t_philo *philo)
 	print_status(philo, THINK);
 }
 
-static int	check_all_alive(t_data *data)
+static bool	check_all_alive(t_data *data)
 {
-	int	ret;
+	bool	ret;
 
-	ret = 0;
+	ret = true;
 	pthread_mutex_lock(&data->mutex);
-	if (data->is_all_alive)
-		ret = 1;
+	if (data->is_all_alive == false)
+		ret = false;
 	pthread_mutex_unlock(&data->mutex);
 	return (ret);
 }
 
-void *routine(void *arg)
+void	*routine(void *arg)
 {
 	t_philo	*p;
 	t_data	*data;
@@ -78,5 +79,5 @@ int  run_threads(t_data *data)
 		if (ret)
 			return (ret);
 	}
-    return (ret);
+	return (ret);
 }
