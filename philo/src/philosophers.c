@@ -6,12 +6,11 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:24:14 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/28 01:33:19 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/05/29 02:26:03 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "../inc/philosophers.h"
-
 
 int	main(int ac, char **av)
 {
@@ -23,6 +22,8 @@ int	main(int ac, char **av)
 			return (-1);
 		parse_data(&data, av);
 		init_data(&data);
+		run_threads(&data);
+		free_all(&data);
 	}
 	else
 		print_error(ac);

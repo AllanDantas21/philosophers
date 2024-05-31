@@ -70,6 +70,7 @@ void	parse_data(t_data *data, char **av)
 	if (av[5])
 		data->eats_total = ft_atol(av[5]);
 	 else
-		data->eats_total = 0;
+		data->eats_total = -1;
 	data->is_all_alive = 1;
+
 }
