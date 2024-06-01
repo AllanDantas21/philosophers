@@ -22,16 +22,17 @@ long long	get_time(void)
 
 void	print_status(t_philo *p, t_status flag)
 {
+	long long now = get_time() - p->table->time_simulation;
 	if (flag == SLEEP)
-		printf (Y"time: %d, id: %d is sleeping\n"RESET, p->last_eat, p->id);
+		printf (Y"time: %lld, id: %d is sleeping\n"RESET, now, p->id);
 	if (flag == THINK)
-		printf (C"time: %d, id: %d is thinking\n"RESET, p->last_eat, p->id);
+		printf (C"time: %lld, id: %d is thinking\n"RESET, now, p->id);
 	if (flag == EAT)
-		printf (G"time: %d, id: %d is eating\n"RESET, p->last_eat, p->id);
+		printf (G"time: %lld, id: %d is eating\n"RESET, now, p->id);
 	if (flag == FORK)
-		printf (B"time: %d, id: %d takes a fork\n"RESET, p->last_eat, p->id);
+		printf (B"time: %lld, id: %d takes a fork\n"RESET, now, p->id);
 	if (flag == DEAD)
-		printf (RED"time: %d, id: %d is dead\n"RESET, p->last_eat, p->id);
+		printf (RED"time: %lld, id: %d is dead\n"RESET, now, p->id);
 }
 void	free_all(t_data *data)
 {
