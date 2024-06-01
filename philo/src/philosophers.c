@@ -22,12 +22,7 @@ int	main(int ac, char **av)
 			return (-1);
 		parse_data(&data, av);
 		init_data(&data);
-		if (monitor_routine(&data))
-		{	
-			//free_all(&data);
-			//return (1);
-			printf("fechou o monitor");
-		}
+		monitor_routine(&data);
 		if (run_threads(&data))
 			return (-1);
 		free_all(&data);

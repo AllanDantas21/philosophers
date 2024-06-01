@@ -23,6 +23,7 @@ long long	get_time(void)
 void	print_status(t_philo *p, t_status flag)
 {
 	long long now = get_time() - p->table->time_simulation;
+
 	pthread_mutex_lock(&p->table->print_mtx);
 	if (p->table->is_all_alive && flag == SLEEP)
 		printf (Y"time: %lld, id: %d is sleeping\n"RESET, now, p->id);
@@ -42,6 +43,7 @@ void	free_all(t_data *data)
 
 	i = data->philo_nbr;
 	pthread_mutex_destroy(&data->mutex);
+	pthread_mutex_destroy(&data->print_mtx);
 	while (--i >= 0)
 	{
 		pthread_mutex_destroy(&data->array_forks[i]);
