@@ -22,6 +22,11 @@ int	main(int ac, char **av)
 			return (-1);
 		parse_data(&data, av);
 		init_data(&data);
+		if (monitor_routine(&data))
+		{	
+			free_all(&data);
+			return (1);
+		}
 		if (run_threads(&data))
 			return (-1);
 //		monitor_routine(&data);

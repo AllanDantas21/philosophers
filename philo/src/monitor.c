@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 15:50:03 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/01 13:59:11 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/01 14:11:23 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,17 @@ static int	check_philo_death(t_data *data)
 	return (0);
 }
 
-void	monitor_routine(void *arg)
+int	monitor_routine(t_data *data)
 {
-	t_data		*data;
-
-	data = (t_data *)arg;
 	while (data->is_all_alive == true)
 	{
 		if (check_philo_death(data))
 		{
 			data->is_all_alive = false;
-			return ;
+			return (1);
 		}
 		usleep(100);
 	}
+	return (0);
 }
 

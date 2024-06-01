@@ -70,7 +70,6 @@ static int	init_threads(t_data *data)
 		if (pthread_create(&data->array_philos[i]->thread, NULL, routine, data->array_philos[i]))
 			return (1);
 	}
-	monitor_routine(data);
 	return (0);
 }
 

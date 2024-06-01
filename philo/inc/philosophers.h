@@ -81,7 +81,7 @@ int			init_data(t_data *data);			// iniciar as threads e mutexes
 /* routine */
 int		run_threads(t_data *data);	// dar join nos threads
 void	*routine(void *arg);		// função de rotina dos threads
-void	monitor_routine(void *arg);
+int	monitor_routine(t_data *arg);
 int	check_is_alive(t_philo	*philo);
 
 /* utils */
