@@ -23,16 +23,18 @@ long long	get_time(void)
 void	print_status(t_philo *p, t_status flag)
 {
 	long long now = get_time() - p->table->time_simulation;
-	if (flag == SLEEP)
+	pthread_mutex_lock(&p->table->print_mtx);
+	if (p->table->is_all_alive && flag == SLEEP)
 		printf (Y"time: %lld, id: %d is sleeping\n"RESET, now, p->id);
-	if (flag == THINK)
+	if (p->table->is_all_alive && flag == THINK)
 		printf (C"time: %lld, id: %d is thinking\n"RESET, now, p->id);
-	if (flag == EAT)
+	if (p->table->is_all_alive && flag == EAT)
 		printf (G"time: %lld, id: %d is eating\n"RESET, now, p->id);
-	if (flag == FORK)
+	if (p->table->is_all_alive && flag == FORK)
 		printf (B"time: %lld, id: %d takes a fork\n"RESET, now, p->id);
-	if (flag == DEAD)
+	if (!p->table->is_all_alive && flag == DEAD)
 		printf (RED"time: %lld, id: %d is dead\n"RESET, now, p->id);
+	pthread_mutex_unlock(&p->table->print_mtx);
 }
 void	free_all(t_data *data)
 {

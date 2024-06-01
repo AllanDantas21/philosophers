@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 15:50:03 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/01 14:11:23 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/01 19:14:58 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	check_is_alive(t_philo	*philo)
 	now = get_time() - philo->table->time_simulation;
 	if (now - philo->last_eat > philo->table->time_die)
 	{
-		print_status(philo, DEAD);
 		philo->table->is_all_alive = false;
+		print_status(philo, DEAD);
 		return (-1);
 	}
 	return (0);
@@ -48,7 +48,7 @@ int	monitor_routine(t_data *data)
 			data->is_all_alive = false;
 			return (1);
 		}
-		usleep(100);
+		usleep(1200);
 	}
 	return (0);
 }

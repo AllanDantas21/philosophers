@@ -24,12 +24,12 @@ int	main(int ac, char **av)
 		init_data(&data);
 		if (monitor_routine(&data))
 		{	
-			free_all(&data);
-			return (1);
+			//free_all(&data);
+			//return (1);
+			printf("fechou o monitor");
 		}
 		if (run_threads(&data))
 			return (-1);
-//		monitor_routine(&data);
 		free_all(&data);
 	}
 	else

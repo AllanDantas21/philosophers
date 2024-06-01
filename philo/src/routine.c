@@ -60,8 +60,14 @@ void	*routine(void *arg)
 		usleep(150000);
 	while (data->is_all_alive && p->nbr_eats != p->eats_total)
 	{
+		if (!data->is_all_alive)
+			return NULL;
 		eat(p);
+		if (!data->is_all_alive)
+			return NULL;
 		nap(p);
+		if (!data->is_all_alive)
+			return NULL;
 		think(p);
 	}
 	return (NULL);
