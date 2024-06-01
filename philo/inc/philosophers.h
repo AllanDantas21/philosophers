@@ -52,6 +52,7 @@ typedef struct s_philo
 	int		last_eat;
 	int		time_eat;	// copia do time_eat do data;
 	int		time_sleep;	// copia do time_sleep do data;
+	bool		is_alive;	// flag para saber se o philo esta vivo;
 	t_thread	thread;		// cada filosofo vai ser uma thread
 	t_mtx		*left_fork;	// garfo esquerdo
 	t_mtx		*right_fork;// garfo direito

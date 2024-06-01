@@ -36,6 +36,7 @@ static int  philos_inits(t_data *data)
 		philo->eats_total = data->eats_total;
 		philo->time_sleep = data->time_sleep;
 		philo->time_eat = data->time_eat;
+		philo->is_alive = true;
 		philo->thread = 0;
 		philo->left_fork = data->array_forks + i;
 		philo->right_fork = data->array_forks + ((i + 1) % data->philo_nbr);
@@ -69,6 +70,7 @@ static int	init_threads(t_data *data)
 		if (pthread_create(&data->array_philos[i]->thread, NULL, routine, data->array_philos[i]))
 			return (1);
 	}
+	monitor_routine(data);
 	return (0);
 }
 

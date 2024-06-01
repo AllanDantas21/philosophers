@@ -36,7 +36,7 @@ static void	think(t_philo *philo)
 {
 	print_status(philo, THINK);
 }
-
+/*
 static bool	check_all_alive(t_data *data)
 {
 	bool	ret;
@@ -48,7 +48,7 @@ static bool	check_all_alive(t_data *data)
 	pthread_mutex_unlock(&data->mutex);
 	return (ret);
 }
-
+*/
 void	*routine(void *arg)
 {
 	t_philo	*p;
@@ -58,12 +58,11 @@ void	*routine(void *arg)
 	data = p->table;
 	if (p->id % 2 == 0)
 		usleep(150000);
-	while (check_all_alive(data) && p->nbr_eats != p->eats_total)
+	while (data->is_all_alive && p->nbr_eats != p->eats_total)
 	{
 		eat(p);
 		nap(p);
 		think(p);
-		check_is_alive(p);
 	}
 	return (NULL);
 }
