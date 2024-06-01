@@ -15,8 +15,8 @@
 static void	eat(t_philo *philo)
 {
 	pthread_mutex_lock(philo->left_fork);
-	print_status(philo, FORK);
 	pthread_mutex_lock(philo->right_fork);
+	print_status(philo, FORK);
 	print_status(philo, FORK);
 	print_status(philo, EAT);
 	philo->nbr_eats++;

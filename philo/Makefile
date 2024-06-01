@@ -1,10 +1,11 @@
-SRC = src/parsers.c src/utils.c src/philosophers.c src/errors.c src/inits.c src/routine.c src/monitor.c
+SRC = src/parsers.c src/utils.c src/philosophers.c src/inits.c src/routine.c src/monitor.c
 
 NAME = philo
 OBJ = $(SRC:.c=.o)
 CC = cc
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror -lpthread
+CFLAGS = -Wall -Wextra -Werror 
+#-lpthread
 
 Reset = \033[0m
 G = \033[32m

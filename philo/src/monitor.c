@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 15:50:03 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/01 19:41:28 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/01 20:09:30 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	check_philo_death(t_data *data)
 
 int	monitor_routine(t_data *data)
 {
-	while (data->is_all_alive == true)
+	while (data->is_all_alive)
 	{
 		if (check_philo_death(data))
 		{
