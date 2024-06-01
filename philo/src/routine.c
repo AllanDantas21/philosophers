@@ -73,7 +73,7 @@ void	*routine(void *arg)
 	return (NULL);
 }
 
-int  run_threads(t_data *data)
+int	run_threads(t_data *data)
 {
 	int	i;
 	int	ret;

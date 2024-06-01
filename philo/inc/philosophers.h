@@ -76,7 +76,7 @@ typedef struct s_data
 }	t_data;
 
 /* inits */
-void		parse_data(t_data *data, char **av); // fazer o parsing das informações
+int		parse_data(t_data *data, char **av); // fazer o parsing das informações
 int			init_data(t_data *data);			// iniciar as threads e mutexes
 
 /* routine */
