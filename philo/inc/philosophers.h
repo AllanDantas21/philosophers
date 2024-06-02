@@ -90,6 +90,7 @@ long		ft_atol(const char *nptr);
 void		free_all(t_data *data);		// free em tudo
 long long	get_time(void);			// função de tempo -> tem que testar ainda
 void		print_status(t_philo *p, t_status flag);
+bool		check_all_alive(t_data *data);
 
 /* parsers */
 int		check_args(char **av);

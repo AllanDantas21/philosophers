@@ -21,10 +21,10 @@ static int	eat(t_philo *philo)
 	pthread_mutex_lock(philo->right_fork);
 	print_status(philo, FORK);
 	print_status(philo, EAT);
-	//pthread_mutex_lock(&philo->table->mutex);
 	philo->nbr_eats++;
-	philo->last_eat = get_time() - philo->table->start_simulation;
-	//pthread_mutex_unlock(&philo->table->mutex);
+	pthread_mutex_lock(&philo->table->mutex);
+	philo->last_eat = get_time() - philo->start_simulation;
+	pthread_mutex_unlock(&philo->table->mutex);
 	usleep(philo->time_eat * 1000);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
@@ -42,15 +42,15 @@ static void	think(t_philo *philo)
 	print_status(philo, THINK);
 }
 
-static bool	check_all_alive(t_data *data)
+bool	check_all_alive(t_data *data)
 {
 	bool	ret;
 
 	ret = true;
-	pthread_mutex_lock(&data->mutex);
+//	pthread_mutex_lock(&data->mutex);
 	if (data->is_all_alive == false)
 		ret = false;
-	pthread_mutex_unlock(&data->mutex);
+//	pthread_mutex_unlock(&data->mutex);
 	return (ret);
 }
 
