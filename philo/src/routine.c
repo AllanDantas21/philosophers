@@ -15,14 +15,16 @@
 static int	eat(t_philo *philo)
 {
 	pthread_mutex_lock(philo->left_fork);
+	print_status(philo, FORK);
 	if (philo->table->philo_nbr == 1)
 		return (-1);
 	pthread_mutex_lock(philo->right_fork);
 	print_status(philo, FORK);
-	print_status(philo, FORK);
 	print_status(philo, EAT);
+	//pthread_mutex_lock(&philo->table->mutex);
 	philo->nbr_eats++;
 	philo->last_eat = get_time() - philo->table->start_simulation;
+	//pthread_mutex_unlock(&philo->table->mutex);
 	usleep(philo->time_eat * 1000);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
