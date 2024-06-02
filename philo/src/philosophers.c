@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 		monitor_routine(&data);
 		if (run_threads(&data))
 			return (-1);
-		//free_all(&data);
+		free_all(&data);
 	}
 	else
 		print_error(ac);
