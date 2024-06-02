@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 15:50:03 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/02 12:43:41 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/02 12:53:56 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static int	check_is_alive(t_philo	*p)
 {
 	long long now;
 
-	now = get_time() - p->start_simulation;
 	pthread_mutex_lock(&p->table->mutex);
+	now = get_time() - p->start_simulation;
 	if (now - p->last_eat > p->time_die)
 	{
 		p->table->is_all_alive = false;

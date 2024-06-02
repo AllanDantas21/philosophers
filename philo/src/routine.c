@@ -47,10 +47,10 @@ bool	check_all_alive(t_data *data)
 	bool	ret;
 
 	ret = true;
-//	pthread_mutex_lock(&data->mutex);
+	pthread_mutex_lock(&data->mutex);
 	if (data->is_all_alive == false)
 		ret = false;
-//	pthread_mutex_unlock(&data->mutex);
+	pthread_mutex_unlock(&data->mutex);
 	return (ret);
 }
 
