@@ -19,10 +19,11 @@ static int	eat(t_philo *philo)
 	if (philo->table->philo_nbr == 1)
 		return (-1);
 	pthread_mutex_lock(philo->right_fork);
+	//pthread_mutex_lock(&philo->table->mutex);
 	print_status(philo, FORK);
 	print_status(philo, EAT);
-	philo->nbr_eats++;
 	pthread_mutex_lock(&philo->table->mutex);
+	philo->nbr_eats++;
 	philo->last_eat = get_time() - philo->start_simulation;
 	pthread_mutex_unlock(&philo->table->mutex);
 	usleep(philo->time_eat * 1000);
@@ -65,6 +66,7 @@ void	*routine(void *arg)
 		usleep(150000);
 	while (check_all_alive(data) && p->nbr_eats != p->eats_total)
 	{
+
 		if (!check_all_alive(data))
 			return NULL;
 		if (eat(p))

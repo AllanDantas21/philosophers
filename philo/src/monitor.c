@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 15:50:03 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/02 12:53:56 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/02 14:19:21 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,25 @@ static int	check_is_alive(t_philo	*p)
 	return (0);
 }
 
-static int	check_philo_death(t_data *data)
+static int	check_philo_status(t_data *data)
 {
 	int	i;
-
-	i = data->philo_nbr;
-	while (--i >= 0)
+	
+	i = 0;
+	while (i < data->philo_nbr)
 	{
 		if (check_is_alive(data->array_philos[i]))
 			return (-1);
+		i++;
 	}
 	return (0);
 }
 
 int	monitor_routine(t_data *data)
 {
-	while (data->is_all_alive)
+	while (42)
 	{
-		if (check_philo_death(data))
+		if (check_philo_status(data))
 			return (1);
 		usleep(1200);
 	}
