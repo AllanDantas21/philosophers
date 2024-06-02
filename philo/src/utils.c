@@ -26,16 +26,24 @@ void	print_status(t_philo *p, t_status flag)
 
 	pthread_mutex_lock(&p->table->print_mtx);
 	now = get_time() - p->start_simulation;
-	if (check_all_alive(p->table) && flag == SLEEP)
+	if (flag == DEAD)
+		printf(RED"time: %lld, id: %d died\n"RESET, now, p->id);
+	pthread_mutex_lock(&p->table->mutex);
+	if (!p->table->is_all_alive)
+	{
+		pthread_mutex_unlock(&p->table->mutex);
+		pthread_mutex_unlock(&p->table->print_mtx);
+		return ;
+	}
+	pthread_mutex_unlock(&p->table->mutex);
+	if (flag == SLEEP)
 		printf (Y"time: %lld, id: %d is sleeping\n"RESET, now, p->id);
-	if (check_all_alive(p->table) && flag == THINK)
+	if (flag == THINK)
 		printf (C"time: %lld, id: %d is thinking\n"RESET, now, p->id);
-	if (check_all_alive(p->table) && flag == EAT)
+	if (flag == EAT)
 		printf (G"time: %lld, id: %d is eating\n"RESET, now, p->id);
-	if (check_all_alive(p->table) && flag == FORK)
+	if (flag == FORK)
 		printf (B"time: %lld, id: %d takes a fork\n"RESET, now, p->id);
-	if (!check_all_alive(p->table) && flag == DEAD)
-		printf (RED"time: %lld, id: %d is dead\n"RESET, now, p->id);
 	pthread_mutex_unlock(&p->table->print_mtx);
 }
 void	free_all(t_data *data)
