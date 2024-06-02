@@ -12,9 +12,11 @@
 
 #include "../inc/philosophers.h"
 
-static void	eat(t_philo *philo)
+static int	eat(t_philo *philo)
 {
 	pthread_mutex_lock(philo->left_fork);
+	if (philo->table->philo_nbr == 1)
+		return (-1);
 	pthread_mutex_lock(philo->right_fork);
 	print_status(philo, FORK);
 	print_status(philo, FORK);
@@ -24,6 +26,7 @@ static void	eat(t_philo *philo)
 	usleep(philo->time_eat * 1000);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
+	return (0);
 }
 
 static void	nap(t_philo *philo)
@@ -62,7 +65,8 @@ void	*routine(void *arg)
 	{
 		if (!check_all_alive(data))
 			return NULL;
-		eat(p);
+		if (eat(p))
+			return NULL;
 		if (!check_all_alive(data))
 			return NULL;
 		nap(p);
