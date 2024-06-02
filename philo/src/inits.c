@@ -24,6 +24,7 @@ static int  philos_inits(t_data *data)
 		if (!philo)
 			return (-1);
 		philo->id = i + 1;
+		philo->is_full = false;
 		philo->nbr_eats = 0;
 		philo->eats_total = data->eats_total;
 		philo->last_eat = 0;

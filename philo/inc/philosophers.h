@@ -47,6 +47,7 @@ typedef enum	e_status
 typedef struct s_philo
 {
 	int16_t		id;			// id do filosofo
+	bool		is_full;
 	int		nbr_eats;		// quantas vezes ele comeu
 	int		eats_total;	// copia do eats_total do data;
 	int		last_eat;
@@ -68,6 +69,7 @@ typedef struct s_data
 	int		time_eat;		// tempo parar comer 
 	int		time_sleep;		// tempo para dormir
 	int		eats_total;		// variavel opcional para o quinto paramentro;
+	int		count_full;
 	long	start_simulation; // 	vai contar o tempo da simulação
 	bool	is_all_alive;	 // flag para saber se todos estão vivos -> se um morrer para o programa;
 	t_mtx	mutex;		//	mutex para acesso a qualquer variavel da data;

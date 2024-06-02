@@ -61,9 +61,9 @@ void	*routine(void *arg)
 
 	p = (t_philo *)arg;
 	data = p->table;
-	if (p->id % 2 == 0)
-		usleep(150000);
-	while (check_all_alive(data) && p->nbr_eats != p->eats_total)
+	if (p->id % 2)
+		usleep(1500);
+	while (check_all_alive(data) && data->count_full != data->philo_nbr)
 	{
 		if (eat(p))
 			return NULL;

@@ -47,6 +47,7 @@ int	parse_data(t_data *data, char **av)
 	 else
 		data->eats_total = -1;
 	data->is_all_alive = true;
+	data->count_full = 0;
 	data->start_simulation = get_time();
 	if (pthread_mutex_init(&data->mutex, NULL))
 		return (-1);
