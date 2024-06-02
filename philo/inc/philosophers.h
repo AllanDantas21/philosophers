@@ -46,7 +46,7 @@ typedef enum	e_status
 /* each philosopher */
 typedef struct s_philo
 {
-	int		id;			// id do filosofo
+	int16_t		id;			// id do filosofo
 	int		nbr_eats;		// quantas vezes ele comeu
 	int		eats_total;	// copia do eats_total do data;
 	int		last_eat;
@@ -68,10 +68,10 @@ typedef struct s_data
 	int		time_eat;		// tempo parar comer 
 	int		time_sleep;		// tempo para dormir
 	int		eats_total;		// variavel opcional para o quinto paramentro;
-	long	start_simulation; // vai contar o tempo da simulação
-	bool	is_all_alive;	 // flag para saber se todos estão vivos -> se um morrer para o programa
-	t_mtx	mutex;		//
-	t_mtx	print_mtx;	//
+	long	start_simulation; // 	vai contar o tempo da simulação
+	bool	is_all_alive;	 // flag para saber se todos estão vivos -> se um morrer para o programa;
+	t_mtx	mutex;		//	mutex para acesso a qualquer variavel da data;
+	t_mtx	print_mtx;	//	mutex para printar uma mensagem;
 	t_mtx	*array_forks;	// array de forks -> um para cada filosofo 
 	t_philo	**array_philos;	// array dos filosofos
 }	t_data;
