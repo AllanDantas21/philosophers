@@ -28,7 +28,7 @@ val:
 	valgrind --leak-check=full --track-origins=yes ./philo 3 300 100 100 3
 
 hell:
-	valgrind --tool=helgrind ./philo 3 300 100 100 2
+	valgrind --tool=helgrind ./philo 4 310 200 100
 clean:
 	$(RM) $(OBJ)
 	@echo "$(Y) 😉 Objects from the $(NAME) project have been removed $(Reset)"

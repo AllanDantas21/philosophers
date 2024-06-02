@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 15:50:03 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/02 16:04:29 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/02 20:45:19 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,14 @@ static int	check_philo_status(t_data *data)
 	{
 		if (check_is_alive(data->array_philos[i]))
 			return (-1);
+		pthread_mutex_lock(&data->mutex);
 		if (data->array_philos[i]->nbr_eats == data->eats_total
 			&& !data->array_philos[i]->is_full)
 		{
 			data->count_full++;
 			data->array_philos[i]->is_full = true;
 		}
+		pthread_mutex_unlock(&data->mutex);
 		if (data->count_full == data->philo_nbr)
 			return (1);
 		i++;
