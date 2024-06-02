@@ -22,7 +22,7 @@ long long	get_time(void)
 
 void	print_status(t_philo *p, t_status flag)
 {
-	long long now = get_time() - p->table->time_simulation;
+	long long now = get_time() - p->start_simulation;
 
 	pthread_mutex_lock(&p->table->print_mtx);
 	if (p->table->is_all_alive && flag == SLEEP)
@@ -79,7 +79,7 @@ long	ft_atol(const char *nptr)
 void	print_error(int ac)
 {
 	if (ac < 5)
-		write(2, RED"too few arguments\n"RESET, 30);
+		printf(RED"too few arguments\n"RESET);
 	else if (ac > 6)
-		write(2, RED"too more arguments\n"RESET, 30);
+		printf(RED"too more arguments\n"RESET);
 }

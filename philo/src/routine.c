@@ -20,8 +20,8 @@ static void	eat(t_philo *philo)
 	print_status(philo, FORK);
 	print_status(philo, EAT);
 	philo->nbr_eats++;
-	philo->last_eat = get_time() - philo->table->time_simulation;
-	usleep(philo->time_eat * 1000 + 10);
+	philo->last_eat = get_time() - philo->table->start_simulation;
+	usleep(philo->time_eat * 1000);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 }
@@ -29,7 +29,7 @@ static void	eat(t_philo *philo)
 static void	nap(t_philo *philo)
 {
 	print_status(philo, SLEEP);
-	usleep(philo->time_sleep * 1000 + 10);
+	usleep(philo->time_sleep * 1000);
 }
 
 static void	think(t_philo *philo)

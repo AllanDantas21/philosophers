@@ -1,4 +1,6 @@
-SRC = src/parsers.c src/utils.c src/philosophers.c src/inits.c src/routine.c src/monitor.c
+SRC = src/parsers.c src/utils.c src/philosophers.c \
+      src/inits.c src/routine.c src/monitor.c 	   \
+      src/utils2.c
 
 NAME = philo
 OBJ = $(SRC:.c=.o)
@@ -23,7 +25,7 @@ $(NAME): $(OBJ)
 	@cat $(image)
 
 val:
-	valgrind --leak-check=full ./philo 3 300 100 100 3
+	valgrind --leak-check=full --track-origins=yes ./philo 3 300 100 100 3
 
 hell:
 	valgrind --tool=helgrind ./philo 3 300 100 100 2

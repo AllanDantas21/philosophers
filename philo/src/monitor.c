@@ -6,18 +6,18 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 15:50:03 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/01 20:09:30 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/01 21:09:38 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philosophers.h"
 
-int	check_is_alive(t_philo	*philo)
+static int	check_is_alive(t_philo	*philo)
 {
 	long long now;
 
-	now = get_time() - philo->table->time_simulation;
-	if (now - philo->last_eat > philo->table->time_die)
+	now = get_time() - philo->start_simulation;
+	if (now - philo->last_eat > philo->time_die)
 	{
 		philo->table->is_all_alive = false;
 		print_status(philo, DEAD);

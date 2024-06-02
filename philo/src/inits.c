@@ -26,9 +26,11 @@ static int  philos_inits(t_data *data)
 		philo->id = i + 1;
 		philo->nbr_eats = 0;
 		philo->eats_total = data->eats_total;
+		philo->last_eat = 0;
 		philo->time_sleep = data->time_sleep;
 		philo->time_eat = data->time_eat;
-		philo->is_alive = true;
+		philo->time_die = data->time_die;
+		philo->start_simulation = data->start_simulation;
 		philo->thread = 0;
 		philo->left_fork = data->array_forks + i;
 		philo->right_fork = data->array_forks + ((i + 1) % data->philo_nbr);
@@ -56,7 +58,7 @@ static int	init_threads(t_data *data)
 	int	i;
 
 	i = -1;
-	data->time_simulation = get_time();
+	data->start_simulation = get_time();
 	while (++i < data->philo_nbr)
 	{
 		if (pthread_create(&data->array_philos[i]->thread, NULL, routine, data->array_philos[i]))

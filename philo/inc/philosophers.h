@@ -50,9 +50,10 @@ typedef struct s_philo
 	int		nbr_eats;		// quantas vezes ele comeu
 	int		eats_total;	// copia do eats_total do data;
 	int		last_eat;
+	long		start_simulation;
+	int		time_die;
 	int		time_eat;	// copia do time_eat do data;
 	int		time_sleep;	// copia do time_sleep do data;
-	bool		is_alive;	// flag para saber se o philo esta vivo;
 	t_thread	thread;		// cada filosofo vai ser uma thread
 	t_mtx		*left_fork;	// garfo esquerdo
 	t_mtx		*right_fork;// garfo direito
@@ -67,7 +68,7 @@ typedef struct s_data
 	int		time_eat;		// tempo parar comer 
 	int		time_sleep;		// tempo para dormir
 	int		eats_total;		// variavel opcional para o quinto paramentro;
-	long	time_simulation; // vai contar o tempo da simulação
+	long	start_simulation; // vai contar o tempo da simulação
 	bool	is_all_alive;	 // flag para saber se todos estão vivos -> se um morrer para o programa
 	t_mtx	mutex;		//
 	t_mtx	print_mtx;	//
@@ -83,7 +84,6 @@ int			init_data(t_data *data);			// iniciar as threads e mutexes
 int		run_threads(t_data *data);	// dar join nos threads
 void	*routine(void *arg);		// função de rotina dos threads
 int	monitor_routine(t_data *arg);
-int	check_is_alive(t_philo	*philo);
 
 /* utils */
 long		ft_atol(const char *nptr);
@@ -92,7 +92,8 @@ long long	get_time(void);			// função de tempo -> tem que testar ainda
 void		print_status(t_philo *p, t_status flag);
 
 /* parsers */
-int			check_args(char **av);
+int		check_args(char **av);
+int		check_input_digit(char **args); 
 void		print_error();
 
 #endif
