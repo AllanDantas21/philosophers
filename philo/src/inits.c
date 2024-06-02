@@ -41,16 +41,21 @@ static int  philos_inits(t_data *data)
 	return (0);
 }
 
-static int	init_mutex(t_data *data)
+static int	init_forks(t_data *data)
 {
-	int	i;
+	int		i;
+	t_fork	*array_forks;
 
-	i = data->philo_nbr;
-	while (--i >= 0)
+	array_forks = data->array_forks;
+	i = 0;
+	while (i < data->philo_nbr)
 	{
-		if (pthread_mutex_init(&data->array_forks[i], NULL))
+		if (pthread_mutex_init(&array_forks[i].fork, NULL))
 			return (-1);
+		array_forks[i].fork_id = i + 1;
+		i++;
 	}
+	data->array_forks = array_forks;
 	return (0);
 }
 
@@ -72,7 +77,7 @@ int	init_data(t_data *data)
 {
 	if (philos_inits(data))
 		return (-1);
-	if (init_mutex(data))
+	if (init_forks(data))
 		return (-1);
 	if (init_threads(data))
 		return (-1);

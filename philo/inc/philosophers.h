@@ -43,6 +43,12 @@ typedef enum	e_status
 	DEAD
 }	t_status;
 
+typedef struct s_fork
+{
+	t_mtx	fork;
+	int		fork_id;
+}				t_fork;
+
 /* each philosopher */
 typedef struct s_philo
 {
@@ -56,8 +62,8 @@ typedef struct s_philo
 	int		time_eat;	// copia do time_eat do data;
 	int		time_sleep;	// copia do time_sleep do data;
 	t_thread	thread;		// cada filosofo vai ser uma thread
-	t_mtx		*left_fork;	// garfo esquerdo
-	t_mtx		*right_fork;// garfo direito
+	t_fork		*left_fork;	// garfo esquerdo
+	t_fork		*right_fork;// garfo direito
 	t_data		*table;
 }	t_philo;
 
@@ -74,7 +80,7 @@ typedef struct s_data
 	bool	is_all_alive;	 // flag para saber se todos estão vivos -> se um morrer para o programa;
 	t_mtx	mutex;		//	mutex para acesso a qualquer variavel da data;
 	t_mtx	print_mtx;	//	mutex para printar uma mensagem;
-	t_mtx	*array_forks;	// array de forks -> um para cada filosofo 
+	t_fork	*array_forks;	// array de forks -> um para cada filosofo 
 	t_philo	**array_philos;	// array dos filosofos
 }	t_data;
 

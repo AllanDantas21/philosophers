@@ -55,7 +55,7 @@ void	free_all(t_data *data)
 	pthread_mutex_destroy(&data->print_mtx);
 	while (--i >= 0)
 	{
-		pthread_mutex_destroy(&data->array_forks[i]);
+		pthread_mutex_destroy(&data->array_forks[i].fork);
 		free(data->array_philos[i]);
 	}
 	free(data->array_forks);
