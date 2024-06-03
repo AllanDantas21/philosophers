@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:02:41 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/02 22:05:42 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/02 22:16:34 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,7 @@ int		parse_data(t_data *data, char **av); // fazer o parsing das informações
 int			init_data(t_data *data);			// iniciar as threads e mutexes
 
 /* routine */
-int		run_threads(t_data *data);	// dar join nos threads
-void	*routine(void *arg);		// função de rotina dos threads
+void	*routine(void *arg);
 int	monitor_routine(t_data *arg);
 
 /* utils */

@@ -6,11 +6,13 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:24:14 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/02 22:01:23 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/02 22:15:30 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
+
+static	int run_threads(t_data *data);
 
 int	main(int ac, char **av)
 {
@@ -30,4 +32,19 @@ int	main(int ac, char **av)
 	else
 		print_error(ac);
 	return(0);
+}
+
+static int	run_threads(t_data *data)
+{
+	int	i;
+	int	ret;
+
+	i = -1;
+	while (++i < data->philo_nbr)
+	{
+		ret = pthread_join(data->array_philos[i]->thread, NULL);
+		if (ret)
+			return (ret);
+	}
+	return (ret);
 }
