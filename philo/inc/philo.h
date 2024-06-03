@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:02:41 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/03 02:12:17 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:32:46 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef enum	e_status
 typedef struct s_fork
 {
 	t_mtx	fork;
-	int		fork_id;
+	int	fork_id;
 }				t_fork;
 
 /* each philosopher */
