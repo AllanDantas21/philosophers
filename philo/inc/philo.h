@@ -6,12 +6,12 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:02:41 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/02 22:16:34 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/03 00:01:07 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILOSOPHERS_H
-# define PHILOSOPHERS_H
+#ifndef PHILO_H
+# define PHILO_H
 
 # include <stdio.h>
 # include <unistd.h>
@@ -21,10 +21,10 @@
 # include <sys/time.h>
 
 typedef pthread_mutex_t	t_mtx;
-typedef pthread_t		t_thread;
+typedef pthread_t	t_thread;
 typedef struct s_data	t_data;
 
-/* colors */
+/*	colors		*/
 # define RESET  "\033[0m"
 # define RED	"\033[1;31m"   
 # define G      "\033[1;32m"   
@@ -53,17 +53,12 @@ typedef struct s_fork
 typedef struct s_philo
 {
 	int16_t		id;			// id do filosofo
-	bool		is_full;
+	bool		is_full;		// se o filosofo estiver satisfeito
 	int		nbr_eats;		// quantas vezes ele comeu
-	int		eats_total;	// copia do eats_total do data;
-	int		last_eat;
-	long		start_simulation;
-	int		time_die;
-	int		time_eat;	// copia do time_eat do data;
-	int		time_sleep;	// copia do time_sleep do data;
+	int		last_eat;		// ultima vez que o filosofo comeu
 	t_thread	thread;		// cada filosofo vai ser uma thread
 	t_fork		*left_fork;	// garfo esquerdo
-	t_fork		*right_fork;// garfo direito
+	t_fork		*right_fork;	// garfo direito
 	t_data		*table;
 }	t_philo;
 
@@ -98,8 +93,6 @@ void		free_all(t_data *data);		// free em tudo
 long long	get_time(void);			// função de tempo -> tem que testar ainda
 void		print_status(t_philo *p, t_status flag);
 bool		check_all_alive(t_data *data);
-
-/* parsers */
 int		check_args(char **av);
 void		print_error();
 

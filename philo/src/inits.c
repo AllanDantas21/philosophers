@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 19:00:52 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/02 22:00:59 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/02 23:49:44 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,7 @@ static int  philos_inits(t_data *data)
 		philo->id = i + 1;
 		philo->is_full = false;
 		philo->nbr_eats = 0;
-		philo->eats_total = data->eats_total;
-		philo->last_eat = 0;
-		philo->time_sleep = data->time_sleep;
-		philo->time_eat = data->time_eat;
-		philo->time_die = data->time_die;
-		philo->start_simulation = data->start_simulation;
+		philo->last_eat = 0;;
 		philo->thread = 0;
 		philo->left_fork = data->array_forks + i;
 		philo->right_fork = data->array_forks + ((i + 1) % data->philo_nbr);

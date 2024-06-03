@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:10:18 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/02 22:01:43 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/02 23:46:31 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,22 @@ long long	get_time(void)
 
 void	print_status(t_philo *p, t_status flag)
 {
-	long long now;
+	long long	now;
+	t_data		*table;
 
-	pthread_mutex_lock(&p->table->print_mtx);
-	now = get_time() - p->start_simulation;
+	table = p->table;
+	pthread_mutex_lock(&table->print_mtx);
+	now = get_time() - table->start_simulation;
 	if (flag == DEAD)
 		printf(RED"time: %lld, id: %d died\n"RESET, now, p->id);
-	pthread_mutex_lock(&p->table->mutex);
-	if (!p->table->is_all_alive)
+	pthread_mutex_lock(&table->mutex);
+	if (!table->is_all_alive)
 	{
-		pthread_mutex_unlock(&p->table->mutex);
-		pthread_mutex_unlock(&p->table->print_mtx);
+		pthread_mutex_unlock(&table->mutex);
+		pthread_mutex_unlock(&table->print_mtx);
 		return ;
 	}
-	pthread_mutex_unlock(&p->table->mutex);
+	pthread_mutex_unlock(&table->mutex);
 	if (flag == SLEEP)
 		printf (Y"time: %lld, id: %d is sleeping\n"RESET, now, p->id);
 	if (flag == THINK)
@@ -44,7 +46,7 @@ void	print_status(t_philo *p, t_status flag)
 		printf (G"time: %lld, id: %d is eating\n"RESET, now, p->id);
 	if (flag == FORK)
 		printf (B"time: %lld, id: %d takes a fork\n"RESET, now, p->id);
-	pthread_mutex_unlock(&p->table->print_mtx);
+	pthread_mutex_unlock(&table->print_mtx);
 }
 void	free_all(t_data *data)
 {
