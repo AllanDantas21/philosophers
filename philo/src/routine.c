@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
@@ -6,13 +6,13 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 02:20:52 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/29 02:35:42 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/02 21:51:31 by aldantas         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "../inc/philosophers.h"
 
-void	define_forks(t_fork **first_fork, t_fork **second_fork, t_philo *philo)
+static void	define_forks(t_fork **first_fork, t_fork **second_fork, t_philo *philo)
 {
 	if (philo->left_fork->fork_id < philo->right_fork->fork_id)
 	{
@@ -60,18 +60,6 @@ static void	think(t_philo *philo)
 	print_status(philo, THINK);
 }
 
-bool	check_all_alive(t_data *data)
-{
-	bool	ret;
-
-	ret = true;
-	pthread_mutex_lock(&data->mutex);
-	if (data->is_all_alive == false)
-		ret = false;
-	pthread_mutex_unlock(&data->mutex);
-	return (ret);
-}
-
 void	*routine(void *arg)
 {
 	t_philo	*p;
@@ -91,17 +79,3 @@ void	*routine(void *arg)
 	return (NULL);
 }
 
-int	run_threads(t_data *data)
-{
-	int	i;
-	int	ret;
-
-	i = -1;
-	while (++i < data->philo_nbr)
-	{
-		ret = pthread_join(data->array_philos[i]->thread, NULL);
-		if (ret)
-			return (ret);
-	}
-	return (ret);
-}

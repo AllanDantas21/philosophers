@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 19:00:52 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/29 02:34:49 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/02 21:49:58 by aldantas         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "../inc/philosophers.h"
 
@@ -71,6 +71,21 @@ static int	init_threads(t_data *data)
 			return (1);
 	}
 	return (0);
+}
+
+int	run_threads(t_data *data)
+{
+	int	i;
+	int	ret;
+
+	i = -1;
+	while (++i < data->philo_nbr)
+	{
+		ret = pthread_join(data->array_philos[i]->thread, NULL);
+		if (ret)
+			return (ret);
+	}
+	return (ret);
 }
 
 int	init_data(t_data *data)

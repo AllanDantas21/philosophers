@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 20:32:56 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/01 20:47:53 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/02 21:47:35 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,18 @@
 static int	ft_isdigit(int digit)
 {
 	return (digit >= '0' && digit <= '9');
+}
+
+bool	check_all_alive(t_data *data)
+{
+	bool	ret;
+
+	ret = true;
+	pthread_mutex_lock(&data->mutex);
+	if (data->is_all_alive == false)
+		ret = false;
+	pthread_mutex_unlock(&data->mutex);
+	return (ret);
 }
 
 int	check_input_digit(char **args)
