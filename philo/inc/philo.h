@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:02:41 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/03 00:01:07 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/03 00:21:54 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,11 @@ typedef struct s_data
 	t_philo	**array_philos;	// array dos filosofos
 }	t_data;
 
-/* inits */
+
 int		parse_data(t_data *data, char **av); // fazer o parsing das informações
 int			init_data(t_data *data);			// iniciar as threads e mutexes
-
-/* routine */
 void	*routine(void *arg);
 int	monitor_routine(t_data *arg);
-
-/* utils */
 long		ft_atol(const char *nptr);
 void		free_all(t_data *data);		// free em tudo
 long long	get_time(void);			// função de tempo -> tem que testar ainda
