@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:24:14 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/02 22:15:30 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/02 22:20:38 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ int	main(int ac, char **av)
 	
 	if(ac == 5 || ac == 6)
 	{
-		if (check_args(av))
+		if (check_args(av) || parse_data(&data, av))
 			return (-1);
-		parse_data(&data, av);
 		init_data(&data);
 		monitor_routine(&data);
 		if (run_threads(&data))
