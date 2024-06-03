@@ -1,4 +1,4 @@
-SRC = src/parsers.c src/utils.c src/philosophers.c \
+SRC = src/parsers.c src/utils.c src/philo.c \
       src/inits.c src/routine.c src/monitor.c 	   \
       src/utils2.c
 

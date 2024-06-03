@@ -6,11 +6,16 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:08:36 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/02 21:46:00 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/02 22:05:01 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/philosophers.h"
+#include "../inc/philo.h"
+
+static int	ft_isdigit(int digit)
+{
+	return (digit >= '0' && digit <= '9');
+}
 
 static int	check_limits(char **av)
 {
@@ -21,6 +26,26 @@ static int	check_limits(char **av)
 	{
 		if (ft_atol(av[i++]) > 2147483647)
 			return (1);
+	}
+	return (0);
+}
+
+static int	check_input_digit(char **args)
+{
+	int	i;
+	int	k;
+
+	i = 0;
+	while(args[i])
+	{
+		k = 0;
+		while(args[i][k])
+		{
+			if (!ft_isdigit(args[i][k]) && args[i][k] != '+')
+				return (1);
+			k++;
+		}
+		i++;
 	}
 	return (0);
 }

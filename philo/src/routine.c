@@ -6,11 +6,11 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 02:20:52 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/02 21:51:31 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/02 22:01:33 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/philosophers.h"
+#include "../inc/philo.h"
 
 static void	define_forks(t_fork **first_fork, t_fork **second_fork, t_philo *philo)
 {
