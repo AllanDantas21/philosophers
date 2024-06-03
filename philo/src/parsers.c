@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:08:36 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/02 22:05:01 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/03 02:37:14 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int	parse_data(t_data *data, char **av)
 {
 	data->philo_nbr = ft_atol(av[1]);
 	data->time_die = ft_atol(av[2]);
-	data->time_eat = ft_atol(av[3]);
-	data->time_sleep = ft_atol(av[4]);
+	data->time_eat = ft_atol(av[3]) * 1000;
+	data->time_sleep = ft_atol(av[4]) * 1000;
 	if (av[5])
 		data->eats_total = ft_atol(av[5]);
 	 else

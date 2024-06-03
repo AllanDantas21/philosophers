@@ -6,19 +6,11 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:10:18 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/02 23:46:31 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/03 02:41:19 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
-
-long long	get_time(void)
-{
-	struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
-}
 
 void	print_status(t_philo *p, t_status flag)
 {
@@ -39,15 +31,16 @@ void	print_status(t_philo *p, t_status flag)
 	}
 	pthread_mutex_unlock(&table->mutex);
 	if (flag == SLEEP)
-		printf (Y"time: %lld, id: %d is sleeping\n"RESET, now, p->id);
+		printf (Y"time: %lld, id: %d is sleeping\n"RESET, now, p->id + 1);
 	if (flag == THINK)
-		printf (C"time: %lld, id: %d is thinking\n"RESET, now, p->id);
+		printf (C"time: %lld, id: %d is thinking\n"RESET, now, p->id + 1);
 	if (flag == EAT)
-		printf (G"time: %lld, id: %d is eating\n"RESET, now, p->id);
+		printf (G"time: %lld, id: %d is eating\n"RESET, now, p->id + 1);
 	if (flag == FORK)
-		printf (B"time: %lld, id: %d takes a fork\n"RESET, now, p->id);
+		printf (B"time: %lld, id: %d takes a fork\n"RESET, now, p->id + 1);
 	pthread_mutex_unlock(&table->print_mtx);
 }
+
 void	free_all(t_data *data)
 {
 	int	i;

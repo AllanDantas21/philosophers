@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 19:00:52 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/03 00:23:34 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/03 01:28:36 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int  philos_inits(t_data *data)
 		philo = malloc(sizeof(t_philo));
 		if (!philo)
 			return (-1);
-		philo->id = i + 1;
+		philo->id = i;
 		philo->is_full = false;
 		philo->nbr_eats = 0;
 		philo->last_eat = 0;

@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 02:20:52 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/02 23:43:42 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/03 02:36:48 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	eat(t_philo *philo, t_data *table)
 	philo->nbr_eats++;
 	philo->last_eat = get_time() - table->start_simulation;
 	pthread_mutex_unlock(&table->mutex);
-	usleep(table->time_eat * 1000);
+	smart_sleep(table, table->time_eat);
 	pthread_mutex_unlock(&first_fork->fork);
 	pthread_mutex_unlock(&second_fork->fork);
 	return (0);
@@ -52,7 +52,7 @@ static int	eat(t_philo *philo, t_data *table)
 static void	nap(t_philo *philo, t_data *table)
 {
 	print_status(philo, SLEEP);
-	usleep(table->time_sleep * 1000);
+	smart_sleep(table, table->time_sleep);
 }
 
 static void	think(t_philo *philo)

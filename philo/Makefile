@@ -1,5 +1,5 @@
 SRC = src/parsers.c src/utils.c src/philo.c \
-      src/inits.c src/routine.c src/monitor.c 
+      src/inits.c src/routine.c src/monitor.c src/time.c
 
 NAME = philo
 OBJ = $(SRC:.c=.o)
