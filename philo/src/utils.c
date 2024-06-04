@@ -6,7 +6,7 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:10:18 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/03 16:49:36 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/03 20:09:00 by aldantas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_status(t_philo *p, t_status flag)
 	pthread_mutex_lock(&table->print_mtx);
 	now = get_time() - table->start_simulation;
 	if (flag == DEAD)
-		printf(RED"time: %lld, id: %d died\n"RESET, now, p->id);
+		printf(RED"time: %lld, id: %d died\n"RESET, now, p->id + 1);
 	pthread_mutex_lock(&table->mutex);
 	if (!table->is_all_alive)
 	{
