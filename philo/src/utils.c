@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
+/*   By: penascim <penascim@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/22 20:10:18 by aldantas          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/06/04 15:33:08 by penascim         ###   ########.fr       */
-=======
-/*   Updated: 2024/06/03 20:09:00 by aldantas         ###   ########.fr       */
->>>>>>> main
+/*   Created: 2024/05/22 20:10:18 by penascim          #+#    #+#             */
+/*   Updated: 2024/06/04 17:56:08 by penascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,26 +80,10 @@ long	ft_atol(const char *nptr)
 	return ((long)(res * sign));
 }
 
-<<<<<<< HEAD
-int	run_threads(t_data *data)
-{
-	int	i;
-	int	ret;
-
-	i = -1;
-	while (++i < data->philo_nbr)
-	{
-		ret = pthread_join(data->array_philos[i]->thread, NULL);
-		if (ret)
-			return (ret);
-	}
-	return (ret);
-=======
 void	print_error(int ac)
 {
 	if (ac < 5)
 		printf(RED"too few arguments\n"RESET);
 	else if (ac > 6)
 		printf(RED"too more arguments\n"RESET);
->>>>>>> main
 }

@@ -3,20 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
+/*   By: penascim <penascim@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 02:20:52 by aldantas          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/06/04 15:33:29 by penascim         ###   ########.fr       */
-=======
-/*   Updated: 2024/06/03 20:15:45 by aldantas         ###   ########.fr       */
->>>>>>> main
+/*   Created: 2024/05/29 02:20:52 by penascim          #+#    #+#             */
+/*   Updated: 2024/06/04 17:24:10 by penascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-static void	define_forks(t_fork **first_fork, t_fork **second_fork, t_philo *philo)
+static void	define_forks(t_fork **first_fork,
+t_fork **second_fork, t_philo *philo)
 {
 	if (philo->left_fork->fork_id < philo->right_fork->fork_id)
 	{
@@ -64,21 +61,6 @@ static void	think(t_philo *philo)
 	print_status(philo, THINK);
 }
 
-<<<<<<< HEAD
-static int	check_all_alive(t_data *data)
-{
-	int	ret;
-
-	ret = 0;
-	pthread_mutex_lock(&data->mutex);
-	if (data->is_all_alive)
-		ret = 1;
-	pthread_mutex_unlock(&data->mutex);
-	return (ret);
-}
-
-=======
->>>>>>> main
 void	*routine(void *arg)
 {
 	t_philo	*p;
@@ -91,13 +73,9 @@ void	*routine(void *arg)
 	while (check_all_alive(tab) && tab->count_full != tab->philo_nbr)
 	{
 		if (eat(p, tab))
-			return NULL;
+			return (NULL);
 		nap(p, tab);
 		think(p);
 	}
 	return (NULL);
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> main

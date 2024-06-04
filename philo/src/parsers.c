@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
+/*   By: penascim <penascim@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/22 20:08:36 by aldantas          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/06/04 15:22:39 by penascim         ###   ########.fr       */
-=======
-/*   Updated: 2024/06/03 20:09:38 by aldantas         ###   ########.fr       */
->>>>>>> main
+/*   Created: 2024/05/22 20:08:36 by penascim          #+#    #+#             */
+/*   Updated: 2024/06/04 17:22:14 by penascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +55,8 @@ int	check_args(char **av)
 	av++;
 	if (check_input_digit(av) || check_limits(av))
 	{
-<<<<<<< HEAD
-		write(2, RED"parse error: incorrect input\n"RESET, 36);
-		return (-1);
-=======
 		printf(RED"parse error: incorrect input"RESET);
-		return(-1);
->>>>>>> main
+		return (-1);
 	}
 	return (0);
 }
@@ -80,9 +71,6 @@ int	parse_data(t_data *data, char **av)
 		data->eats_total = ft_atol(av[5]);
 	else
 		data->eats_total = -1;
-<<<<<<< HEAD
-	data->is_all_alive = 1;
-=======
 	data->is_all_alive = true;
 	data->count_full = 0;
 	data->start_simulation = get_time();
@@ -95,5 +83,4 @@ int	parse_data(t_data *data, char **av)
 	if (!data->array_forks || !data->array_forks)
 		return (-1);
 	return (0);
->>>>>>> main
 }

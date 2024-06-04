@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
+/*   By: penascim <penascim@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/31 15:50:03 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/03 00:29:10 by aldantas         ###   ########.fr       */
+/*   Created: 2024/05/31 15:50:03 by penascim          #+#    #+#             */
+/*   Updated: 2024/06/04 17:21:26 by penascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	check_is_alive(t_philo	*p, t_data *table)
 {
-	long long now;
+	long long	now;
 
 	pthread_mutex_lock(&table->mutex);
 	now = get_time() - table->start_simulation;
@@ -32,7 +32,7 @@ static int	check_is_alive(t_philo	*p, t_data *table)
 static int	check_philo_status(t_data *data)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < data->philo_nbr)
 	{
@@ -75,4 +75,3 @@ bool	check_all_alive(t_data *data)
 	pthread_mutex_unlock(&data->mutex);
 	return (ret);
 }
-

@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
+/*   By: penascim  penascim@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 19:00:52 by aldantas          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/06/04 15:20:25 by penascim         ###   ########.fr       */
-=======
-/*   Updated: 2024/06/03 17:52:32 by aldantas         ###   ########.fr       */
->>>>>>> main
+/*   Created: 2024/05/27 19:00:52 by penascim          #+#    #+#             */
+/*   Updated: 2024/06/04 17:19:51 by penascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +18,7 @@ static int	philos_inits(t_data *data)
 	t_philo	*philo;
 
 	i = data->philo_nbr;
-<<<<<<< HEAD
-	data->time_simulation = get_time();
-	if (pthread_mutex_init(&data->mutex, NULL))
-		return (-1);
-	data->array_forks = malloc(sizeof(pthread_mutex_t)
-			* data->philo_nbr);
-	data->array_philos = malloc(sizeof(t_philo *) * data->philo_nbr);
-	if (!data->array_forks || !data->array_forks)
-		return (-1);
 	while (--i >= 0)
-=======
-	while (--i >= 0 )
->>>>>>> main
 	{
 		philo = malloc(sizeof(t_philo));
 		if (!philo)
@@ -45,7 +29,7 @@ static int	philos_inits(t_data *data)
 		philo->last_eat = 0;
 		philo->thread = 0;
 		philo->left_fork = &data->array_forks[i];
-		philo->right_fork= &data->array_forks[((i + 1) % data->philo_nbr)];
+		philo->right_fork = &data->array_forks[((i + 1) % data->philo_nbr)];
 		philo->table = data;
 		data->array_philos[i] = philo;
 	}

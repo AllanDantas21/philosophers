@@ -3,30 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
+/*   By: penascim <penascim@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/22 18:24:14 by aldantas          #+#    #+#             */
-<<<<<<< HEAD:philo/src/philosophers.c
-/*   Updated: 2024/06/04 15:28:42 by penascim         ###   ########.fr       */
-=======
-/*   Updated: 2024/06/03 20:14:11 by aldantas         ###   ########.fr       */
->>>>>>> main:philo/src/philo.c
+/*   Created: 2024/05/22 18:24:14 by penascim          #+#    #+#             */
+/*   Updated: 2024/06/04 17:23:01 by penascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-static	int run_threads(t_data *data);
+static int	run_threads(t_data *data);
 
 int	main(int ac, char **av)
 {
-<<<<<<< HEAD:philo/src/philosophers.c
 	t_data	data;
 
-=======
-	t_data data;
-	
->>>>>>> main:philo/src/philo.c
 	if (ac == 5 || ac == 6)
 	{
 		if (check_args(av) || parse_data(&data, av))
