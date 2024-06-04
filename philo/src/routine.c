@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 02:20:52 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/29 02:35:42 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/04 15:33:29 by penascim         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "../inc/philosophers.h"
 
@@ -48,7 +48,7 @@ static int	check_all_alive(t_data *data)
 	return (ret);
 }
 
-void *routine(void *arg)
+void	*routine(void *arg)
 {
 	t_philo	*p;
 	t_data	*data;
@@ -64,19 +64,4 @@ void *routine(void *arg)
 		think(p);
 	}
 	return (NULL);
-}
-
-int  run_threads(t_data *data)
-{
-	int	i;
-	int	ret;
-
-	i = -1;
-	while (++i < data->philo_nbr)
-	{
-		ret = pthread_join(data->array_philos[i]->thread, NULL);
-		if (ret)
-			return (ret);
-	}
-    return (ret);
 }

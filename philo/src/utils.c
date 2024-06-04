@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:10:18 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/29 02:14:08 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/04 15:33:08 by penascim         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "../inc/philosophers.h"
 
@@ -33,6 +33,7 @@ void	print_status(t_philo *p, t_status flag)
 	if (flag == DEAD)
 		printf (RED"id: %d is dead\n"RESET, p->id);
 }
+
 void	free_all(t_data *data)
 {
 	int	i;
@@ -70,3 +71,17 @@ long	ft_atol(const char *nptr)
 	return ((long)(res * sign));
 }
 
+int	run_threads(t_data *data)
+{
+	int	i;
+	int	ret;
+
+	i = -1;
+	while (++i < data->philo_nbr)
+	{
+		ret = pthread_join(data->array_philos[i]->thread, NULL);
+		if (ret)
+			return (ret);
+	}
+	return (ret);
+}

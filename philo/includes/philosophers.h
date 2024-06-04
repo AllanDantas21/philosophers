@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:02:41 by aldantas          #+#    #+#             */
-/*   Updated: 2024/05/29 02:58:11 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/04 15:38:42 by penascim         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
@@ -47,8 +47,8 @@ typedef enum	e_status
 typedef struct s_philo
 {
 	int		id;			// id do filosofo
-	int		nbr_eats;		// quantas vezes ele comeu
-	int		eats_total;
+	int			nbr_eats;		// quantas vezes ele comeu
+	int			eats_total;
 	t_thread	thread;		// cada filosofo vai ser uma thread
 	t_mtx		*left_fork;	// garfo esquerdo
 	t_mtx		*right_fork;// garfo direito
@@ -75,8 +75,8 @@ void		parse_data(t_data *data, char **av); // fazer o parsing das informações
 int			init_data(t_data *data);			// iniciar as threads e mutexes
 
 /* routine */
-int		run_threads(t_data *data);	// dar join nos threads
-void	*routine(void *arg);		// função de rotina dos threads
+int			run_threads(t_data *data);	// dar join nos threads
+void		*routine(void *arg);		// função de rotina dos threads
 
 /* utils */
 long		ft_atol(const char *nptr);
@@ -86,6 +86,6 @@ void		print_status(t_philo *p, t_status flag);
 
 /* parsers */
 int			check_args(char **av);
-void		print_error();
+void		print_error(void);
 
 #endif
