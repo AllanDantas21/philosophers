@@ -6,29 +6,57 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 02:20:52 by aldantas          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/06/04 15:33:29 by penascim         ###   ########.fr       */
+=======
+/*   Updated: 2024/06/03 20:15:45 by aldantas         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/philosophers.h"
+#include "../inc/philo.h"
 
-static void	eat(t_philo *philo, t_data *data)
+static void	define_forks(t_fork **first_fork, t_fork **second_fork, t_philo *philo)
 {
-	pthread_mutex_lock(philo->left_fork);
-	print_status(philo, FORK);
-	pthread_mutex_lock(philo->right_fork);
-	print_status(philo, FORK);
-	print_status(philo, EAT);
-	philo->nbr_eats++;
-	usleep(data->time_eat);
-	pthread_mutex_unlock(philo->left_fork);
-	pthread_mutex_unlock(philo->right_fork);
+	if (philo->left_fork->fork_id < philo->right_fork->fork_id)
+	{
+		*first_fork = philo->left_fork;
+		*second_fork = philo->right_fork;
+	}
+	else
+	{
+		*first_fork = philo->right_fork;
+		*second_fork = philo->left_fork;
+	}
 }
 
-static void	nap(t_philo *philo, t_data *data)
+static int	eat(t_philo *philo, t_data *table)
+{
+	t_fork	*first_fork;
+	t_fork	*second_fork;
+
+	define_forks(&first_fork, &second_fork, philo);
+	pthread_mutex_lock(&first_fork->fork);
+	print_status(philo, FORK);
+	if (table->philo_nbr == 1)
+		return (-1);
+	pthread_mutex_lock(&second_fork->fork);
+	print_status(philo, FORK);
+	print_status(philo, EAT);
+	pthread_mutex_lock(&table->mutex);
+	philo->nbr_eats++;
+	philo->last_eat = get_time() - table->start_simulation;
+	pthread_mutex_unlock(&table->mutex);
+	smart_sleep(table, table->time_eat);
+	pthread_mutex_unlock(&first_fork->fork);
+	pthread_mutex_unlock(&second_fork->fork);
+	return (0);
+}
+
+static void	nap(t_philo *philo, t_data *table)
 {
 	print_status(philo, SLEEP);
-	usleep(data->time_sleep);
+	smart_sleep(table, table->time_sleep);
 }
 
 static void	think(t_philo *philo)
@@ -36,6 +64,7 @@ static void	think(t_philo *philo)
 	print_status(philo, THINK);
 }
 
+<<<<<<< HEAD
 static int	check_all_alive(t_data *data)
 {
 	int	ret;
@@ -48,20 +77,27 @@ static int	check_all_alive(t_data *data)
 	return (ret);
 }
 
+=======
+>>>>>>> main
 void	*routine(void *arg)
 {
 	t_philo	*p;
-	t_data	*data;
+	t_data	*tab;
 
 	p = (t_philo *)arg;
-	data = p->table;
-	if (p->id % 2 == 0)
+	tab = p->table;
+	if (p->id % 2)
 		usleep(1500);
-	while (check_all_alive(data) && p->nbr_eats != p->eats_total)
+	while (check_all_alive(tab) && tab->count_full != tab->philo_nbr)
 	{
-		eat(p, data);
-		nap(p, data);
+		if (eat(p, tab))
+			return NULL;
+		nap(p, tab);
 		think(p);
 	}
 	return (NULL);
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> main

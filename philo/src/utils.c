@@ -6,32 +6,43 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:10:18 by aldantas          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/06/04 15:33:08 by penascim         ###   ########.fr       */
+=======
+/*   Updated: 2024/06/03 20:09:00 by aldantas         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/philosophers.h"
-
-long long	get_time(void)
-{
-	struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
-}
+#include "../inc/philo.h"
 
 void	print_status(t_philo *p, t_status flag)
 {
-	if (flag == SLEEP)
-		printf (Y"id: %d is sleeping\n"RESET, p->id);
-	if (flag == THINK)
-		printf (C"id: %d is thinking\n"RESET, p->id);
-	if (flag == EAT)
-		printf (G"id: %d is eating\n"RESET, p->id);
-	if (flag == FORK)
-		printf (B"id: %d takes a fork\n"RESET, p->id);
+	long long	now;
+	t_data		*table;
+
+	table = p->table;
+	pthread_mutex_lock(&table->print_mtx);
+	now = get_time() - table->start_simulation;
 	if (flag == DEAD)
-		printf (RED"id: %d is dead\n"RESET, p->id);
+		printf(RED"time: %lld, id: %d died\n"RESET, now, p->id + 1);
+	pthread_mutex_lock(&table->mutex);
+	if (!table->is_all_alive)
+	{
+		pthread_mutex_unlock(&table->mutex);
+		pthread_mutex_unlock(&table->print_mtx);
+		return ;
+	}
+	pthread_mutex_unlock(&table->mutex);
+	if (flag == SLEEP)
+		printf (Y"time: %lld, id: %d is sleeping\n"RESET, now, p->id + 1);
+	if (flag == THINK)
+		printf (C"time: %lld, id: %d is thinking\n"RESET, now, p->id + 1);
+	if (flag == EAT)
+		printf (G"time: %lld, id: %d is eating\n"RESET, now, p->id + 1);
+	if (flag == FORK)
+		printf (B"time: %lld, id: %d takes a fork\n"RESET, now, p->id + 1);
+	pthread_mutex_unlock(&table->print_mtx);
 }
 
 void	free_all(t_data *data)
@@ -39,9 +50,11 @@ void	free_all(t_data *data)
 	int	i;
 
 	i = data->philo_nbr;
+	pthread_mutex_destroy(&data->mutex);
+	pthread_mutex_destroy(&data->print_mtx);
 	while (--i >= 0)
 	{
-		pthread_mutex_destroy(&data->array_forks[i]);
+		pthread_mutex_destroy(&data->array_forks[i].fork);
 		free(data->array_philos[i]);
 	}
 	free(data->array_forks);
@@ -71,6 +84,7 @@ long	ft_atol(const char *nptr)
 	return ((long)(res * sign));
 }
 
+<<<<<<< HEAD
 int	run_threads(t_data *data)
 {
 	int	i;
@@ -84,4 +98,12 @@ int	run_threads(t_data *data)
 			return (ret);
 	}
 	return (ret);
+=======
+void	print_error(int ac)
+{
+	if (ac < 5)
+		printf(RED"too few arguments\n"RESET);
+	else if (ac > 6)
+		printf(RED"too more arguments\n"RESET);
+>>>>>>> main
 }
