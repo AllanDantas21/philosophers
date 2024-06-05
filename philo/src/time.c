@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../inc/philo.h"
 
 long long	time_diff(long long past, long long pres)
 {

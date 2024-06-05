@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../inc/philo.h"
+
 static int	run_threads(t_data *data);
 
 int	main(int ac, char **av)
