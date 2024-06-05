@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   parsers.c                                          :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:08:36 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/03 20:09:38 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/04 23:18:42 by aldantas         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "../inc/philo.h"
 
@@ -36,10 +36,10 @@ static int	check_input_digit(char **args)
 	int	k;
 
 	i = 0;
-	while(args[i])
+	while (args[i])
 	{
 		k = 0;
-		while(args[i][k])
+		while (args[i][k])
 		{
 			if (!ft_isdigit(args[i][k]) && args[i][k] != '+')
 				return (1);
@@ -56,7 +56,7 @@ int	check_args(char **av)
 	if (check_input_digit(av) || check_limits(av))
 	{
 		printf(RED"parse error: incorrect input"RESET);
-		return(-1);
+		return (-1);
 	}
 	return (0);
 }
@@ -69,7 +69,7 @@ int	parse_data(t_data *data, char **av)
 	data->time_sleep = ft_atol(av[4]) * 1000;
 	if (av[5])
 		data->eats_total = ft_atol(av[5]);
-	 else
+	else
 		data->eats_total = -1;
 	data->is_all_alive = true;
 	data->count_full = 0;

@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
@@ -6,25 +6,23 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 02:40:30 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/03 20:15:26 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/04 23:18:40 by aldantas         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
-#include "../inc/philo.h"
 
 long long	time_diff(long long past, long long pres)
 {
 	return ((pres - past) * 1000);
 }
 
-void		smart_sleep(t_data *t, long long time)
+void	smart_sleep(t_data *t, long long time)
 {
-	long long past;
+	long long	past;
 
 	past = get_time() - t->start_simulation;
 	while (check_all_alive(t))
 	{
-
 		if (time_diff(past, get_time() - t->start_simulation) >= time)
 			break ;
 		usleep(42);

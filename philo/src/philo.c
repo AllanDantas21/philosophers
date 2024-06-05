@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
@@ -6,18 +6,16 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:24:14 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/03 20:14:11 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/04 23:18:41 by aldantas         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
-#include "../inc/philo.h"
-
-static	int run_threads(t_data *data);
+static int	run_threads(t_data *data);
 
 int	main(int ac, char **av)
 {
-	t_data data;
-	
+	t_data	data;
+
 	if (ac == 5 || ac == 6)
 	{
 		if (check_args(av) || parse_data(&data, av))
@@ -30,7 +28,7 @@ int	main(int ac, char **av)
 	}
 	else
 		print_error(ac);
-	return(0);
+	return (0);
 }
 
 static int	run_threads(t_data *data)

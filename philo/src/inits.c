@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
@@ -6,19 +6,19 @@
 /*   By: aldantas <aldantas@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 19:00:52 by aldantas          #+#    #+#             */
-/*   Updated: 2024/06/03 17:52:32 by aldantas         ###   ########.fr       */
+/*   Updated: 2024/06/04 23:18:43 by aldantas         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "../inc/philo.h"
 
-static int  philos_inits(t_data *data)
+static int	philos_inits(t_data *data)
 {
 	int		i;
 	t_philo	*philo;
 
 	i = data->philo_nbr;
-	while (--i >= 0 )
+	while (--i >= 0)
 	{
 		philo = malloc(sizeof(t_philo));
 		if (!philo)
@@ -29,7 +29,7 @@ static int  philos_inits(t_data *data)
 		philo->last_eat = 0;
 		philo->thread = 0;
 		philo->left_fork = &data->array_forks[i];
-		philo->right_fork= &data->array_forks[((i + 1) % data->philo_nbr)];
+		philo->right_fork = &data->array_forks[((i + 1) % data->philo_nbr)];
 		philo->table = data;
 		data->array_philos[i] = philo;
 	}
@@ -62,7 +62,8 @@ static int	init_threads(t_data *data)
 	data->start_simulation = get_time();
 	while (++i < data->philo_nbr)
 	{
-		if (pthread_create(&data->array_philos[i]->thread, NULL, routine, data->array_philos[i]))
+		if (pthread_create(&data->array_philos[i]->thread,
+				NULL, routine, data->array_philos[i]))
 			return (1);
 	}
 	return (0);
